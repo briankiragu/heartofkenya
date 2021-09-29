@@ -145,7 +145,6 @@ export default {
   `,
 
   name: 'BusinessForm',
-
   props: {
     order: { type: [String, Number], default: '' },
     action: { type: String, default: 'update' },

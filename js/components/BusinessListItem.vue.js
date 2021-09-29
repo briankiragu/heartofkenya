@@ -82,9 +82,7 @@ export default {
   `,
 
   name: 'BusinessListItem',
-
   components: { BusinessForm },
-
   props: {
     business: { type: Object, default: () => { } },
   },

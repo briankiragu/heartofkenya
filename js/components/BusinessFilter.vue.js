@@ -64,9 +64,7 @@ export default {
   `,
 
   name: 'BusinessFilter',
-
   components: { BusinessFilterItem },
-
   props: {
     modelValue: { type: String, default: '' },
     items: { type: Array, default: () => [] },

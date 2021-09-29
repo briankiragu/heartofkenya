@@ -49,7 +49,6 @@ export default {
   `,
 
   name: 'BusinessDirectory',
-
   components: {
     BusinessFilter,
     BusinessSearchbar,
