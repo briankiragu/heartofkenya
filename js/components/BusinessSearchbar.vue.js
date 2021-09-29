@@ -11,7 +11,7 @@ export default {
   emits: ['update:modelValue'],
 
   setup(props, { emit }) {
-    const onSearch = lodash.debounce((e) => {
+    const onSearch = _.debounce((e) => {
       emit('update:modelValue', e.target.value);
     }, 275);
 
