@@ -55,7 +55,7 @@ export default {
         :id="'business-' + business.directoryIdx + '-collapse'"
         class="collapse"
         :aria-labelledby="'business-' + business.directoryIdx + '-heading'"
-        :data-parent="#business-directory-accordion"
+        data-parent="#business-directory-accordion"
   >
         <div class="card-body">
           <!-- Business info. -->
