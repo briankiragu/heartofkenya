@@ -2,10 +2,10 @@
 import useBackend from '../composables/useBackend.js';
 
 const BusinessFilter = Vue.defineAsyncComponent(
-  () => import('./BusinessFilter.vue'),
+  () => import('./BusinessFilter.vue.js'),
 );
 const BusinessSearchbar = Vue.defineAsyncComponent(
-  () => import('./BusinessSearchbar.vue'),
+  () => import('./BusinessSearchbar.vue.js'),
 );
 const BusinessForm = Vue.defineAsyncComponent(() => import('./BusinessForm.vue.js'));
 const BusinessList = Vue.defineAsyncComponent(() => import('./BusinessList.vue.js'));
