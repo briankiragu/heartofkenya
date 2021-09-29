@@ -7,8 +7,8 @@ const BusinessFilter = Vue.defineAsyncComponent(
 const BusinessSearchbar = Vue.defineAsyncComponent(
   () => import('./BusinessSearchbar.vue'),
 );
-const BusinessForm = Vue.defineAsyncComponent(() => import('./BusinessForm.vue'));
-const BusinessList = Vue.defineAsyncComponent(() => import('./BusinessList.vue'));
+const BusinessForm = Vue.defineAsyncComponent(() => import('./BusinessForm.vue.js'));
+const BusinessList = Vue.defineAsyncComponent(() => import('./BusinessList.vue.js'));
 
 export default {
   template: `
