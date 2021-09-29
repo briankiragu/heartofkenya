@@ -15,6 +15,8 @@ export default {
     </div>
   `,
 
+  name: 'BusinessFilterItem',
+
   props: {
     item: { type: Object, default: () => { } },
     active: { type: Boolean, default: () => false },

@@ -48,6 +48,8 @@ export default {
     </div>
   `,
 
+  name: 'BusinessDirectory',
+
   components: {
     BusinessFilter,
     BusinessSearchbar,

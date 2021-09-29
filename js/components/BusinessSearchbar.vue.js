@@ -23,6 +23,8 @@ export default {
     </div>
   `,
 
+  name: 'BusinessSearchbar',
+
   props: {
     modelValue: { type: String, default: '' },
     onSubmit: { type: Function, default: () => { } },

@@ -8,6 +8,8 @@ export default {
     <h1>This is the Business Form</h1>
   `,
 
+  name: 'BusinessForm',
+
   props: {
     order: { type: [String, Number], default: '' },
     action: { type: String, default: 'update' },

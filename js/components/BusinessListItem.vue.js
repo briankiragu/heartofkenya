@@ -7,6 +7,8 @@ export default {
     <h1>This is the Business List Item</h1>
   `,
 
+  name: 'BusinessListItem',
+
   components: { BusinessForm },
 
   props: {

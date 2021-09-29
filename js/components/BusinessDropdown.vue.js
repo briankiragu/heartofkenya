@@ -22,6 +22,8 @@ export default {
     </div>
   `,
 
+  name: 'BusinessDropdown',
+
   props: {
     filterTerm: { type: String, default: '' },
   },
