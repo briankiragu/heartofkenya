@@ -1,6 +1,26 @@
 export default {
   template: `
-    <h1>This is the Business Searchbar</h1>
+    <div class="business-searchbar form-row mb-3">
+      <div class="col mb-2">
+        <input
+          type="search"
+          class="form-control"
+          placeholder="Search for a business"
+          autocomplete="organization"
+          :value="modelValue"
+          @input.prevent="onSearch($event)"
+        />
+      </div>
+      <div class="col-md-2">
+        <button
+          type="submit"
+          class="btn btn-block btn-primary"
+          @click.prevent="() => onSubmit()"
+        >
+          Search
+        </button>
+      </div>
+    </div>
   `,
 
   props: {
