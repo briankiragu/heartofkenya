@@ -1,4 +1,4 @@
-import useFormatting from '../composables/useFormatting';
+import useFormatting from '../composables/useFormatting.js';
 
 export default {
   template: `

@@ -1,4 +1,4 @@
-import useFormatting from '../composables/useFormatting';
+import useFormatting from '../composables/useFormatting.js';
 
 // eslint-disable-next-line import/extensions
 const BusinessForm = Vue.defineAsyncComponent(() => import('./BusinessForm.vue.js'));
@@ -75,7 +75,7 @@ export default {
           </p>
 
           <!--Edit button. -->
-          <BusinessForm : order="business.directoryIdx" : business="business" />
+          <BusinessForm :order="business.directoryIdx" :business="business" />
         </div>
       </div>
     </div>
