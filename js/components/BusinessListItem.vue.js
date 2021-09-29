@@ -1,5 +1,6 @@
 import useFormatting from '../composables/useFormatting';
 
+// eslint-disable-next-line import/extensions
 const BusinessForm = Vue.defineAsyncComponent(() => import('./BusinessForm.vue.js'));
 
 export default {
