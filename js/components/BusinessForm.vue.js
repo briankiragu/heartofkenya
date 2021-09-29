@@ -5,7 +5,7 @@ import useFormatting from '../composables/useFormatting.js';
 
 export default {
   template: `
-    <h1>One humongous file</h1>
+    <h1>This is the Business Form</h1>
   `,
 
   props: {
