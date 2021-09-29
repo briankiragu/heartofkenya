@@ -1,0 +1,8 @@
+# Package dependencies.
+node_modules
+
+# Package dependency lock file.
+*lock.json
+
+# Editor files.
+.vscode
