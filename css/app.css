@@ -65,6 +65,14 @@ button {
   box-shadow: none;
   text-decoration: none;
 }
+.business-list-item button:hover {
+  text-decoration: none;
+}
+.business-list-item button:focus {
+  box-shadow: none;
+  outline: none;
+  text-decoration: none;
+}
 .business-list-item__heading {
   color: #3b3535;
   font-size: 1.4rem;
