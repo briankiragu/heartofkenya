@@ -21,77 +21,77 @@ export default () => {
   const filterTerm = Vue.ref('');
 
   const categories = Vue.ref([
-    {
-      param: 'automotive',
-      title: 'Automotive',
-      status: 'Active',
-    },
-    {
-      param: 'beauty',
-      title: 'Beauty and Health',
-      status: 'Active',
-    },
-    {
-      param: 'bookstores',
-      title: 'Book Stores',
-      status: 'Active',
-    },
-    {
-      param: 'clothing',
-      title: 'Clothing Store',
-      status: 'Active',
-    },
-    {
-      param: 'electronics',
-      title: 'Electronics',
-      status: 'Active',
-    },
-    {
-      param: 'general',
-      title: 'General Store',
-      status: 'Active',
-    },
-    {
-      param: 'hotels',
-      title: 'Hotels',
-      status: 'Active',
-    },
-    {
-      param: 'restaurants',
-      title: 'Restaurants',
-      status: 'Active',
-    },
-    {
-      param: 'shoes',
-      title: 'Shoes',
-      status: 'Active',
-    },
+    // {
+    //   param: 'automotive',
+    //   title: 'Automotive',
+    //   status: 'Active',
+    // },
+    // {
+    //   param: 'beauty',
+    //   title: 'Beauty and Health',
+    //   status: 'Active',
+    // },
+    // {
+    //   param: 'bookstores',
+    //   title: 'Book Stores',
+    //   status: 'Active',
+    // },
+    // {
+    //   param: 'clothing',
+    //   title: 'Clothing Store',
+    //   status: 'Active',
+    // },
+    // {
+    //   param: 'electronics',
+    //   title: 'Electronics',
+    //   status: 'Active',
+    // },
+    // {
+    //   param: 'general',
+    //   title: 'General Store',
+    //   status: 'Active',
+    // },
+    // {
+    //   param: 'hotels',
+    //   title: 'Hotels',
+    //   status: 'Active',
+    // },
+    // {
+    //   param: 'restaurants',
+    //   title: 'Restaurants',
+    //   status: 'Active',
+    // },
+    // {
+    //   param: 'shoes',
+    //   title: 'Shoes',
+    //   status: 'Active',
+    // },
   ]);
   const businesses = Vue.ref([
-    {
-      directoryIdx: 4,
-      category: 'Beauty',
-      title: 'Ruth Beauty Parlour',
-      city: 'Machakos',
-      owner: 'Bernard',
-      website: 'https://heartofkenya.com/machakos/ruth_beauty_parlour',
-    },
-    {
-      directoryIdx: 1,
-      category: 'bookstores',
-      title: 'Chap Chap Enterprise',
-      city: 'Machakos',
-      owner: 'Richard Wasike',
-      website: 'https://heartofkenya.com/machakos/chapchap',
-    },
-    {
-      directoryIdx: 6,
-      category: 'general',
-      title: 'Remnant General Shop',
-      city: 'Machakos',
-      owner: 'John Musembi',
-      website: 'https://heartofkenya.com/machakos/remnant',
-    },
+    // {
+    //   directoryIdx: 4,
+    //   category: 'Beauty',
+    //   title: 'Ruth Beauty Parlour',
+    //   city: 'Machakos',
+    //   owner: 'Bernard',
+    //   website: 'https://heartofkenya.com/machakos/ruth_beauty_parlour',
+    // },
+    // {
+    //   directoryIdx: 1,
+    //   category: 'bookstores',
+    //   title: 'Chap Chap Enterprise',
+    //   city: 'Machakos',
+    //   owner: 'Richard Wasike',
+    //   website: 'https://heartofkenya.com/machakos/chapchap',
+    // },
+    // {
+    //   directoryIdx: 6,
+    //   category: 'general',
+    //   title: 'Remnant General Shop',
+    //   city: 'Machakos',
+    //   owner: 'John Musembi',
+    //   website: 'https://heartofkenya.com/machakos/remnant',
+    // },
   ]);
 
   const hasCategories = Vue.computed(() => categories.value.length > 0);

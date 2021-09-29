@@ -23,15 +23,15 @@ export default {
         >
           <div class="business-list-item__title">
             <h2 class="business-list-item__heading mb-2 mb-md-1">
-              <span>{{ toTitle(business.title) }}</span>
+              <span>{{ toTitle(business.title) }}</span><br />
               <a
                 v-if="hasWebsite"
                 title="Visit Website"
-                class="business-list-item__link ml-2"
+                class="business-list-item__link"
                 :href="business.website"
                 target="_blank"
               >
-                <i class="fas fa-external-link-alt"></i>
+                Visit Website <i class="fas fa-external-link-alt"></i>
               </a>
             </h2>
             <h5 v-if="hasOwner" class="business-list-item__locally-owned my-1">
@@ -64,14 +64,6 @@ export default {
               This business is locally owned by
               <strong>{{ toTitle(business.owner) }}.</strong>
             </span>
-            <a
-              v-if="hasWebsite"
-              class="business-list-item__link ml-1"
-              :href="business.website"
-              target="_blank"
-            >
-              <i class="fas fa-external-link-alt"></i>
-            </a>
           </p>
 
           <!--Edit button. -->
