@@ -3,3 +3,103 @@
     'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue',
     sans-serif;
 }
+
+.business-filter button {
+  box-shadow: none;
+  text-decoration: none;
+}
+.business-filter__heading {
+  color: #3b3535;
+  font-size: 1.2rem;
+}
+.business-filter__subheading {
+  color: rgba(135, 135, 135, 1);
+  font-size: 0.94rem;
+  font-weight: 400;
+}
+
+.business-filter-item {
+  border: 0.125rem solid rgba(73, 69, 69, 0.25);
+  border-radius: 14px;
+  cursor: pointer;
+  padding: 5px 16px;
+  transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
+}
+.business-filter-item__icon {
+  margin-right: 10px;
+}
+.business-filter-item__title {
+  color: #494545;
+  font-size: 0.97rem;
+  font-weight: 440;
+  white-space: nowrap;
+}
+.business-filter-item:hover,
+.business-filter-item.active {
+  border-color: rgba(24, 79, 151, 0.4);
+}
+.business-filter-item:hover .business-filter-item__icon,
+.business-filter-item.active .business-filter-item__icon {
+  color: #184f97;
+}
+.business-filter-item:hover .business-filter-item__title,
+.business-filter-item.active .business-filter-item__title {
+  color: #184f97;
+}
+
+input,
+select,
+textarea,
+button {
+  font-size: 0.95rem;
+}
+
+.business-list {
+  color: #384252;
+}
+
+.business-list-item {
+  margin-bottom: 15px;
+}
+.business-list-item button {
+  box-shadow: none;
+  text-decoration: none;
+}
+.business-list-item__heading {
+  color: #3b3535;
+  font-size: 1.4rem;
+}
+.business-list-item__subheading {
+  color: #4a4545;
+  font-size: 0.94rem;
+  font-weight: 400;
+}
+.business-list-item__subheading i {
+  margin-right: 10px;
+}
+.business-list-item__locally-owned {
+  color: #625d5b;
+  font-size: 0.94rem;
+}
+.business-list-item__link {
+  color: #1f5fb2;
+  font-size: 0.9rem;
+}
+
+.business-searchbar input,
+.business-searchbar button {
+  font-size: 0.95rem;
+  font-weight: 400;
+  height: 53px;
+  transition: all 0.3s ease-in-out;
+}
+.business-searchbar .form-control {
+  padding: 23px;
+}
+.business-searchbar .form-control:focus,
+.business-searchbar button:hover,
+.business-searchbar button:focus {
+  border: none;
+  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
+    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
+}
