@@ -1,10 +1,10 @@
 /* eslint-disable import/extensions */
-import Hello from './components/Hello.vue.js';
+import BusinessDirectory from './components/BusinessDirectory.vue.js';
 
 // eslint-disable-next-line no-undef
 const app = Vue.createApp({
-  components: { Hello },
+  components: { BusinessDirectory },
 });
 
 // Mount the application.
-app.mount('#app');
+app.mount('#app-3');
