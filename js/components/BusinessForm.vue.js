@@ -47,11 +47,12 @@ export default {
             <div class="modal-body">
               <!-- Title. -->
               <div class="form-group">
-                <label :for="'business-' + order + '-title'"> Title </label>
+                <label :for="'business-' + order + '-title'">Title*</label>
                 <input
                   :id="'business-' + order + '-title'"
                   v-model="businessForm.title"
                   type="text"
+                  name="title"
                   class="form-control"
                   placeholder="What is this business called?"
                   autocomplete="organization"
@@ -61,11 +62,12 @@ export default {
 
               <!-- Category. -->
               <div v-if="categories" class="form-group">
-                <label :for="'business-' + order + '-category'">Category</label>
+                <label :for="'business-' + order + '-category'">Category*</label>
                 <input
                   :id="'business-' + order + '-category'"
                   v-model="businessForm.category"
                   type="text"
+                  name="category"
                   class="form-control"
                   placeholder="Select a category or add a new one"
                   :list="'business-' + order + '-categories'"
@@ -81,32 +83,94 @@ export default {
               </div>
 
               <div class="form-row">
+                <!-- Phone Number. -->
+                <div class="form-group col-md-5">
+                  <label :for="'business-' + order + '-phone'">Phone Number</label>
+                  <input
+                    :id="'business-' + order + '-phone'"
+                    v-model.number="businessForm.phone"
+                    type="number"
+                    name="phone"
+                    class="form-control"
+                    placeholder="254712345678"
+                    minLength="9"
+                    maxlength="12"
+                    autocomplete="tel"
+                  />
+                </div>
+
+                <!-- Email. -->
+                <div class="form-group col">
+                  <label :for="'business-' + order + '-email'">Email Addresss</label>
+                  <input
+                    :id="'business-' + order + '-email'"
+                    v-model="businessForm.email"
+                    type="email"
+                    name="email"
+                    class="form-control"
+                    placeholder="info@business.co.ke"
+                    autocomplete="email"
+                  />
+                </div>
+              </div>
+
+              <!-- Website. -->
+              <div class="form-group">
+                <label :for="'business-' + order + '-website'">Website</label>
+                <input
+                  :id="'business-' + order + '-website'"
+                  v-model="businessForm.website"
+                  type="url"
+                  name="website"
+                  class="form-control"
+                  placeholder="https://example.com"
+                  autocomplete="url"
+                />
+              </div>
+
+              <div class="form-row">
                 <!-- City. -->
-                <div class="form-group col-md-4">
-                  <label :for="'business-' + order + '-city'">City</label>
+                <div class="form-group col-md-5">
+                  <label :for="'business-' + order + '-city'">City*</label>
                   <input
                     :id="'business-' + order + '-city'"
                     v-model="businessForm.city"
                     type="text"
+                    name="city"
                     class="form-control"
-                    placeholder="Where is this business"
-                    autocomplete="address-level2"
+                    placeholder="Which city is this in?"
+                    autocomplete="address-level1"
                     required
                   />
                 </div>
 
-                <!-- Website. -->
+                <!-- Street Address. -->
                 <div class="form-group col">
-                  <label :for="'business-' + order + '-website'">Website</label>
+                  <label :for="'business-' + order + '-streetaddress'">Street Address</label>
                   <input
-                    :id="'business-' + order + '-website'"
-                    v-model="businessForm.website"
-                    type="url"
+                    :id="'business-' + order + '-streetaddress'"
+                    v-model="businessForm.streetaddress"
+                    type="text"
+                    name="streetaddress"
                     class="form-control"
-                    placeholder="https://example.com"
-                    autocomplete="url"
+                    placeholder="Where is this business located?"
+                    autocomplete="street-address"
                   />
                 </div>
+              </div>
+
+              <!-- Directions. -->
+              <div class="form-group">
+                <label :for="'business-' + order + '-directions'">Directions</label>
+                <input
+                  :id="'business-' + order + '-directions'"
+                  v-model="businessForm.directions"
+                  type="text"
+                  name="directions"
+                  class="form-control"
+                  placeholder="How can I get to this business?"
+                  autocomplete="address-level2"
+                />
               </div>
 
               <!-- Notes. -->
@@ -116,6 +180,7 @@ export default {
                   :id="'business-' + order + '-notes'"
                   v-model="businessForm.notes"
                   class="form-control"
+                  name="notes"
                   rows="3"
                   placeholder="Any additional information?"
                 ></textarea>
@@ -179,13 +244,16 @@ export default {
     const businessForm = Vue.ref({
       title: props.business ? props.business.title : '',
       category: props.business ? props.business.category.toLowerCase() : '',
-      city: props.business ? props.business.city : '',
-      // eslint-disable-next-line no-nested-ternary
+      phone: props.business ? props.business.phone : '',
+      email: props.business ? props.business.email : '',
       website: props.business
         ? props.business.website
           ? props.business.website
           : ''
         : '',
+      city: props.business ? props.business.city : '',
+      streetaddress: props.business ? props.business.streetaddress : '',
+      directions: props.business ? props.business.directions : '',
       notes: '',
     });
 
