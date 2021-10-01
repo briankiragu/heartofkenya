@@ -57,14 +57,32 @@ export default {
         :aria-labelledby="'business-' + business.directoryIdx + '-heading'"
         data-parent="#business-directory-accordion"
   >
-        <div class="card-body">
+        <div class="card-body table-responsive">
           <!-- Business info. -->
-          <p class="mb-2">
-            <span v-if="hasOwner">
-              This business is locally owned by
-              <strong>{{ toTitle(business.owner) }}.</strong>
-            </span>
-          </p>
+          <table class="table table-hover mt-0">
+            <tbody>
+              <tr v-if="business.owner">
+                <th scope="row">Owned By</th>
+                <td>{{ business.owner }}</td>
+              </tr>
+              <tr v-if="business.phone">
+                <th scope="row">Phone Number</th>
+                <td>{{ business.phone }}</td>
+              </tr>
+              <tr v-if="business.email">
+                <th scope="row">Email Address</th>
+                <td>{{ business.email }}</td>
+              </tr>
+              <tr v-if="business.streetaddress">
+                <th scope="row">Street Address</th>
+                <td>{{ business.streetaddress }}</td>
+              </tr>
+              <tr v-if="business.directions">
+                <th scope="row">Directions</th>
+                <td>{{ business.directions }}</td>
+              </tr>
+            </tbody>
+          </table>
 
           <!--Edit button. -->
           <BusinessForm :order="business.directoryIdx" :business="business" />

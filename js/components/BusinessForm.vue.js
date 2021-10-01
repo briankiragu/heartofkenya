@@ -92,7 +92,7 @@ export default {
                     type="number"
                     name="phone"
                     class="form-control"
-                    placeholder="254712345678"
+                    placeholder="254 7## ### ###"
                     minLength="9"
                     maxlength="12"
                     autocomplete="tel"
@@ -108,7 +108,7 @@ export default {
                     type="email"
                     name="email"
                     class="form-control"
-                    placeholder="info@business.co.ke"
+                    placeholder="email@example.co.ke"
                     autocomplete="email"
                   />
                 </div>
