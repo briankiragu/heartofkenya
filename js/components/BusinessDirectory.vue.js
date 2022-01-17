@@ -1,14 +1,18 @@
 // eslint-disable-next-line import/extensions
 import useBackend from '../composables/useBackend.js';
 
-const BusinessFilter = Vue.defineAsyncComponent(
-  () => import('./BusinessFilter.vue.js'),
+const BusinessFilter = Vue.defineAsyncComponent(() =>
+  import('./BusinessFilter.vue.js')
 );
-const BusinessSearchbar = Vue.defineAsyncComponent(
-  () => import('./BusinessSearchbar.vue.js'),
+const BusinessSearchbar = Vue.defineAsyncComponent(() =>
+  import('./BusinessSearchbar.vue.js')
 );
-const BusinessForm = Vue.defineAsyncComponent(() => import('./BusinessForm.vue.js'));
-const BusinessList = Vue.defineAsyncComponent(() => import('./BusinessList.vue.js'));
+const BusinessForm = Vue.defineAsyncComponent(() =>
+  import('./BusinessForm.vue.js')
+);
+const BusinessList = Vue.defineAsyncComponent(() =>
+  import('./BusinessList.vue.js')
+);
 
 export default {
   template: `
@@ -81,11 +85,9 @@ export default {
       isLoading.value = true;
 
       // Get the current query parameters.
-      const urlSearchParams = new URLSearchParams(
-        window.location.search,
-      );
+      const urlSearchParams = new URLSearchParams(window.location.search);
       const { search, category } = Object.fromEntries(
-        urlSearchParams.entries(),
+        urlSearchParams.entries()
       );
 
       // Set the search term depending on the search URL params.
@@ -107,7 +109,7 @@ export default {
         .then((response) => {
           categories.value = [
             ...response.data.filter(
-              (catgry) => catgry.status.toLowerCase() === 'active',
+              (catgry) => catgry.status.toLowerCase() === 'active'
             ),
           ];
         })
