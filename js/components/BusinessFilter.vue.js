@@ -7,21 +7,21 @@ const BusinessFilterItem = Vue.defineAsyncComponent(
 export default {
   template: `
     <div
-      id="categoriesAccordion"
+      :id="name + 'Accordion'"
       class="accordion accordion-flush business-filter"
     >
       <div class="accordion-item">
         <h2
-          id="categories-heading"
+          :id="name + '-heading'"
           class="accordion-header d-none d-md-block border-bottom-0"
         >
           <button
             class="accordion-button rounded"
             type="button"
             data-bs-toggle="collapse"
-            data-bs-target="#categories-collapse"
+            :data-bs-target="'#' + name + '-collapse'"
             :aria-expanded="isExpanded"
-            aria-controls="categories-collapse"
+            :aria-controls="name + '-collapse'"
           >
             <h2 class="business-filter__heading mb-0">
               <span>{{ filterCount }}</span> {{ name }} available
@@ -29,10 +29,10 @@ export default {
           </button>
         </h2>
         <div
-          id="categories-collapse"
+          :id="name + '-collapse'"
           class="accordion-collapse collapse"
           :class="{ show: isExpanded }"
-          aria-labelledby="categories-heading"
+          :aria-labelledby="name + '-heading'"
         >
           <div class="accordion-body p-0 p-md-3">
             <div

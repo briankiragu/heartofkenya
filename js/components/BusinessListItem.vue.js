@@ -1,7 +1,12 @@
-import useFormatting from '../composables/useFormatting.js';
+/* eslint-disable import/extensions */
 
 // eslint-disable-next-line import/extensions
-const BusinessForm = Vue.defineAsyncComponent(() => import('./BusinessForm.vue.js'));
+import useFormatting from '../composables/useFormatting.js';
+
+// eslint-disable-next-line no-undef
+const BusinessForm = Vue.defineAsyncComponent(() =>
+  import('./BusinessForm.vue.js')
+);
 
 export default {
   template: `
@@ -56,7 +61,7 @@ export default {
         class="collapse"
         :aria-labelledby="'business-' + business.directoryIdx + '-heading'"
         data-parent="#business-directory-accordion"
-  >
+      >
         <div class="card-body table-responsive">
           <!-- Business info. -->
           <table class="table table-hover mt-0">
@@ -94,7 +99,7 @@ export default {
   name: 'BusinessListItem',
   components: { BusinessForm },
   props: {
-    business: { type: Object, default: () => { } },
+    business: { type: Object, default: () => {} },
   },
 
   setup(props) {
@@ -102,16 +107,22 @@ export default {
     const { toTitle } = useFormatting();
 
     // Check if the business has an owner.
+    // eslint-disable-next-line no-undef
     const hasOwner = Vue.computed(() => !!props.business.owner);
 
     // Check if the business has an website.
+    // eslint-disable-next-line no-undef
     const hasWebsite = Vue.computed(() => !!props.business.website);
 
     // Check if the business has any data.
+    // eslint-disable-next-line no-undef
     const hasData = Vue.computed(() => hasOwner.value || hasWebsite.value);
 
     return {
-      hasOwner, hasWebsite, hasData, toTitle,
+      hasOwner,
+      hasWebsite,
+      hasData,
+      toTitle,
     };
   },
 };
