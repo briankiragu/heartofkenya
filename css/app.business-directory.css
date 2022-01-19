@@ -29,12 +29,13 @@
 }
 
 @media only screen and (max-width: 876px) {
-  .business-filter .card {
+  .business-filter .accordion-header {
     border: none;
   }
 }
 
 .business-filter button {
+  background-color: var(--primary-300);
   box-shadow: none;
   text-decoration: none;
 }
@@ -45,9 +46,9 @@
   text-decoration: none;
 }
 .business-filter__heading {
-  color: rgba(135, 135, 135, 1);
-  font-size: 0.98rem;
-  font-weight: 400;
+  color: var(--primary-700);
+  font-size: 1rem;
+  font-weight: 600;
 }
 .business-filter__heading span {
   font-size: 1.2rem;

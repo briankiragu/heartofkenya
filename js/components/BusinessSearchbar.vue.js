@@ -26,11 +26,12 @@ export default {
   name: 'BusinessSearchbar',
   props: {
     modelValue: { type: String, default: '' },
-    onSubmit: { type: Function, default: () => { } },
+    onSubmit: { type: Function, default: () => {} },
   },
   emits: ['update:modelValue'],
 
   setup(props, { emit }) {
+    // eslint-disable-next-line no-undef
     const onSearch = _.debounce((e) => {
       emit('update:modelValue', e.target.value);
     }, 275);

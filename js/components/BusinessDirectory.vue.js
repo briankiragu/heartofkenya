@@ -35,7 +35,7 @@ export default {
         </div>
 
         <!-- Result. -->
-        <div class="businesses col px-4 py-0 d-flex flex-column">
+        <div class="businesses col px-4 py-0 ps-md-2 pe-md-5 d-flex flex-column">
           <!-- Searchbar. -->
           <BusinessSearchbar
             v-model="searchTerm"

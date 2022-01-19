@@ -6,48 +6,39 @@ const BusinessFilterItem = Vue.defineAsyncComponent(
 
 export default {
   template: `
-     <div id="categoryAccordion" class="business-filter accordion">
-      <div class="card">
-        <!-- Card Header -->
-        <div id="categoryHeading"
-          class="card-header p-md-2 p-lg-3 d-none d-md-block"
+    <div
+      id="categoriesAccordion"
+      class="accordion accordion-flush business-filter"
+    >
+      <div class="accordion-item">
+        <h2
+          id="categories-heading"
+          class="accordion-header d-none d-md-block border-bottom-0"
         >
           <button
-            class="
-              btn btn-link btn-block
-              text-left
-              d-flex
-              justify-content-between
-              align-items-center
-            "
+            class="accordion-button rounded"
             type="button"
-            data-toggle="collapse"
-            data-target="#filterCollapse"
+            data-bs-toggle="collapse"
+            data-bs-target="#categories-collapse"
             :aria-expanded="isExpanded"
-            aria-controls="filterCollapse"
+            aria-controls="categories-collapse"
           >
-            <div class="business-filter__title">
-              <h2 class="business-filter__heading mb-0">
-                <span>{{ filterCount }}</span> {{ name }} available
-              </h2>
-            </div>
-
-            <div class="business-filter__icon">
-              <i class="fas fa-caret-down"></i>
-            </div>
+            <h2 class="business-filter__heading mb-0">
+              <span>{{ filterCount }}</span> {{ name }} available
+            </h2>
           </button>
-        </div>
-
-        <!-- Card Body -->
+        </h2>
         <div
-          id="filterCollapse"
-          class="collapse"
+          id="categories-collapse"
+          class="accordion-collapse collapse"
           :class="{ show: isExpanded }"
-          aria-labelledby="categoryHeading"
-          data-parent="#categoryAccordion"
+          aria-labelledby="categories-heading"
         >
-          <div class="card-body p-0 p-md-2 p-lg-4">
-            <div v-if="hasItems" class="business-filter__items d-flex flex-md-wrap">
+          <div class="accordion-body p-0 p-md-3">
+            <div
+              v-if="hasItems"
+              class="business-filter__items d-flex flex-md-wrap"
+            >
               <BusinessFilterItem
                 v-for="item of items"
                 :key="item.param"
