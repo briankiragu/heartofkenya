@@ -52,7 +52,7 @@ export default {
                 v-for="item of items"
                 :key="item.param"
                 :item="item"
-                class="mb-2 mr-1"
+                class="mb-2 me-1"
                 :active="filters.includes(item.param)"
                 @selected="updateFilters"
               />

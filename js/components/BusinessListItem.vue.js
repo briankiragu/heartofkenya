@@ -41,7 +41,7 @@ export default {
               class="business-list-item__subheading mb-0 d-flex align-items-start"
             >
               {{ toTitle(business.category) }} in
-              <em class="ml-1">{{ toTitle(business.city) }}</em>
+              <em class="ms-1">{{ toTitle(business.city) }}</em>
             </h4>
           </div>
 
