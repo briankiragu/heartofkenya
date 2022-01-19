@@ -7,9 +7,9 @@ const BusinessFilter = Vue.defineAsyncComponent(() =>
   import('./BusinessFilter.vue.js')
 );
 // eslint-disable-next-line no-undef
-const BusinessSearchbar = Vue.defineAsyncComponent(() =>
+const BusinessSearchBar = Vue.defineAsyncComponent(() =>
   // eslint-disable-next-line import/extensions
-  import('./BusinessSearchbar.vue.js')
+  import('./BusinessSearchBar.vue.js')
 );
 // eslint-disable-next-line no-undef
 const BusinessForm = Vue.defineAsyncComponent(() =>
@@ -37,7 +37,7 @@ export default {
         <!-- Result. -->
         <div class="businesses col px-4 py-0 ps-md-2 pe-md-5 d-flex flex-column">
           <!-- Searchbar. -->
-          <BusinessSearchbar
+          <BusinessSearchBar
             v-model="searchTerm"
             :on-submit="onSubmit"
             class="mb-5 mb-md-4"
@@ -82,7 +82,7 @@ export default {
   name: 'BusinessDirectory',
   components: {
     BusinessFilter,
-    BusinessSearchbar,
+    BusinessSearchBar,
     BusinessForm,
     BusinessList,
   },

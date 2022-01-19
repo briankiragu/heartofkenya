@@ -1,6 +1,6 @@
 export default {
   template: `
-    <div class="business-searchbar row mb-3">
+    <div class="business-searchbar row gx-3 mb-3">
       <div class="col mb-2">
         <input
           type="search"
@@ -26,7 +26,7 @@ export default {
     </div>
   `,
 
-  name: 'BusinessSearchbar',
+  name: 'BusinessSearchBar',
   props: {
     modelValue: { type: String, default: '' },
     onSubmit: { type: Function, default: () => {} },

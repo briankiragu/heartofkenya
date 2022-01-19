@@ -8,7 +8,7 @@ export default {
     <!-- Button trigger modal -->
     <button
       type="button"
-      class="business-list-item-edit__trigger btn btn-primary"
+      class="business-list-item-edit__trigger btn btn-outline-primary"
       data-toggle="modal"
       :data-target="'#business' + order + 'Backdrop'"
       v-bind="$attrs"
@@ -213,7 +213,7 @@ export default {
   props: {
     order: { type: [String, Number], default: '' },
     action: { type: String, default: 'update' },
-    business: { type: Object, default: () => { }, required: false },
+    business: { type: Object, default: () => {}, required: false },
   },
 
   setup(props) {
@@ -235,12 +235,15 @@ export default {
     };
 
     // Set the loading state.
+    // eslint-disable-next-line no-undef
     const isLoading = Vue.ref(false);
 
     // Retrive the categories from the parent component.
+    // eslint-disable-next-line no-undef
     const categories = Vue.inject('categories');
 
     // Populate the form values.
+    // eslint-disable-next-line no-undef
     const businessForm = Vue.ref({
       title: props.business ? props.business.title : '',
       category: props.business ? props.business.category.toLowerCase() : '',
@@ -258,10 +261,12 @@ export default {
     });
 
     // Check if the 'other' category option was selected.
+    // eslint-disable-next-line no-undef
     const isOther = Vue.computed(
-      () => !categories?.value
-        ?.map((category) => category.param)
-        .includes(businessForm.value.category),
+      () =>
+        !categories?.value
+          ?.map((category) => category.param)
+          .includes(businessForm.value.category)
     );
 
     /**
@@ -272,12 +277,13 @@ export default {
       isLoading.value = true;
 
       // Send the request.
-      const response = props.action === 'update'
-        ? await updateBusiness(
-          props.business.directoryIdx,
-          businessForm.value,
-        )
-        : await storeBusiness(businessForm.value);
+      const response =
+        props.action === 'update'
+          ? await updateBusiness(
+              props.business.directoryIdx,
+              businessForm.value
+            )
+          : await storeBusiness(businessForm.value);
 
       // Refresh the page if it was successful.
       if (response.status === 'success') {
