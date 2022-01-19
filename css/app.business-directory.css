@@ -23,20 +23,20 @@
   text-decoration: none;
 }
 .business-filter__heading {
-  color: #3b3535;
-  font-size: 1.2rem;
-}
-.business-filter__subheading {
   color: rgba(135, 135, 135, 1);
-  font-size: 0.94rem;
+  font-size: 0.98rem;
   font-weight: 400;
 }
+.business-filter__heading span {
+  font-size: 1.2rem;
+  font-weight: 700;
+}
+
 .business-filter__items {
   -ms-overflow-style: none; /* Edge, Internet Explorer */
   scrollbar-width: none; /* Firefox */
   overflow-x: scroll;
 }
-
 .business-filter__items::-webkit-scrollbar {
   display: none; /* Chrome, Safari, Opera */
 }

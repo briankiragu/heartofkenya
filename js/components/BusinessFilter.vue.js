@@ -27,10 +27,9 @@ export default {
             aria-controls="filterCollapse"
           >
             <div class="business-filter__title">
-              <h2 class="business-filter__heading mb-1">Filter by category</h2>
-              <h4 class="business-filter__subheading mb-0">
-                {{ filterCount }} categories available
-              </h4>
+              <h2 class="business-filter__heading mb-0">
+                <span>{{ filterCount }}</span> {{ name }} available
+              </h2>
             </div>
 
             <div class="business-filter__icon">
@@ -72,6 +71,7 @@ export default {
   components: { BusinessFilterItem },
   props: {
     modelValue: { type: String, default: '' },
+    name: { type: String, default: 'categories' },
     items: { type: Array, default: () => [] },
   },
 

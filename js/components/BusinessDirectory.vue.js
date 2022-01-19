@@ -31,7 +31,7 @@ export default {
       <div class="row pt-5">
         <div v-if="!hasDirectoryCategory" class="col-md-4 pb-4 px-4 px-md-5 py-0">
           <!-- Categories. -->
-          <BusinessFilter v-model="filterTerm" :items="categories" />
+          <BusinessFilter v-model="filterTerm"  :items="categories" />
         </div>
 
         <!-- Result. -->
