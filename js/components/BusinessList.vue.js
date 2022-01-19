@@ -1,11 +1,12 @@
+// eslint-disable-next-line no-undef
 const BusinessListItem = Vue.defineAsyncComponent(
   // eslint-disable-next-line import/extensions
-  () => import('./BusinessListItem.vue.js'),
+  () => import('./BusinessListItem.vue.js')
 );
 
 export default {
   template: `
-    <div class="business-list mb-5">
+    <div class="business-list">
       <div
         v-if="hasBusinesses"
         id="business-directory-accordion"
@@ -33,6 +34,7 @@ export default {
   },
 
   setup(props) {
+    // eslint-disable-next-line no-undef
     const hasBusinesses = Vue.computed(() => props.businesses.length > 0);
 
     return { hasBusinesses };

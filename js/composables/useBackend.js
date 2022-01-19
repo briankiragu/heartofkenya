@@ -40,6 +40,11 @@ export default () => {
       status: 'Active',
     },
     {
+      param: 'Butchery',
+      title: 'Butchery',
+      status: 'Active',
+    },
+    {
       param: 'clothing',
       title: 'Clothing Store',
       status: 'Active',
@@ -60,8 +65,8 @@ export default () => {
       status: 'Active',
     },
     {
-      param: 'restaurants',
-      title: 'Restaurants',
+      param: 'restaurant',
+      title: 'Restaurant',
       status: 'Active',
     },
     {
@@ -73,6 +78,21 @@ export default () => {
   // eslint-disable-next-line no-undef
   const businesses = Vue.ref([
     {
+      phone: '0733855700',
+      email: 'Jndukumwendwa@gmail.com',
+      streetaddress: '',
+      directions: 'Around machakos bus station',
+      FlagRequestedWebsite: 'Yes',
+      _json: null,
+      directoryIdx: 25,
+      category: 'Baby shop',
+      title: 'Joy baby shop ',
+      city: 'MACHAKOS ',
+      owner: 'Joyce N. Mwendwa',
+      website: 'https://heartofkenya.com/machakos/joybabyshop',
+    },
+    {
+      _json: null,
       directoryIdx: 4,
       category: 'Beauty',
       title: 'Ruth Beauty Parlour',
@@ -81,6 +101,51 @@ export default () => {
       website: 'https://heartofkenya.com/machakos/ruth_beauty_parlour',
     },
     {
+      phone: '0768389711',
+      email: 'Benwekesa78@gmail.com',
+      streetaddress: 'Kamba building.',
+      directions: 'Opposite roof garden first floor. ',
+      FlagRequestedWebsite: '',
+      _json: null,
+      directoryIdx: 26,
+      category: 'Beauty parlour ',
+      title: 'MTR Ben Beauty and Dreadlock centre ',
+      city: 'Machakos town ',
+      owner: 'Benard ',
+      website: 'Deutz',
+    },
+    {
+      phone: '0722763696/0720721522',
+      email: 'Henivcollege@gmail.com',
+      streetaddress: 'Mbolu malu',
+      directions: 'First floor mbooni house next to cathedral ',
+      FlagRequestedWebsite: '',
+      directoryIdx: 23,
+      category: 'BEAUTY PARLOUR AND COLLEGE',
+      title: 'Heniv salon &Beauty college',
+      city: 'Machakos ',
+      owner: 'Niverce mueni',
+      website: '',
+    },
+    {
+      phone: '',
+      email: 'Thitukamunya254@gmail.com',
+      streetaddress: '',
+      directions: '',
+      FlagRequestedWebsite: 'Yes',
+      directoryIdx: 33,
+      category: 'Blogging ',
+      title: 'Blogging web',
+      city: 'MACHAKOS ',
+      owner: 'Yes',
+      website: '',
+    },
+    {
+      phone: '254.072.842.2886',
+      email: 'sifunarichard2017@gmail.com',
+      streetaddress: 'Machakos-Wote Road, Machakos, Kenya',
+      directions: 'We are located 1km from Machakos along Machakos-Wote Road.',
+      _json: null,
       directoryIdx: 1,
       category: 'bookstores',
       title: 'Chap Chap Enterprise',
@@ -89,12 +154,56 @@ export default () => {
       website: 'https://heartofkenya.com/machakos/chapchap',
     },
     {
-      directoryIdx: 6,
-      category: 'general',
-      title: 'Remnant General Shop',
-      city: 'Machakos',
-      owner: 'John Musembi',
-      website: 'https://heartofkenya.com/machakos/remnant',
+      phone: '0727697369',
+      email: 'Kennedywanjiru23.kw@gmail.com',
+      streetaddress: '',
+      directions: ' Along side Ngei road',
+      FlagRequestedWebsite: 'Yes',
+      directoryIdx: 28,
+      category: 'Cereals ',
+      title: 'Tenja cereal enterprise ',
+      city: 'Machakos ',
+      owner: 'Murithi wanjiru ',
+      website: '',
+    },
+    {
+      phone: '0737379111',
+      email: 'Nelvioventuresltd@yahoo ',
+      streetaddress: 'Mbolu malu road',
+      directions: 'Machakos town  Along mbolu malu road',
+      FlagRequestedWebsite: 'Yes',
+      directoryIdx: 30,
+      category: 'Cyber cafe',
+      title: 'Nelvio ventures',
+      city: 'Machakos ',
+      owner: 'Nelson nzauli',
+      website: '',
+    },
+    {
+      phone: '0728023696',
+      email: '',
+      streetaddress: '',
+      directions: 'Miditex house ',
+      FlagRequestedWebsite: 'Yes',
+      directoryIdx: 34,
+      category: 'Deadlocks ',
+      title: 'Mwikali deadlocks salon',
+      city: 'Machakos ',
+      owner: 'Stella mwikali',
+      website: '',
+    },
+    {
+      phone: '0700139073',
+      email: '',
+      streetaddress: '',
+      directions: 'Opposite wizard restaurant',
+      FlagRequestedWebsite: 'Yes',
+      directoryIdx: 35,
+      category: 'Electricals',
+      title: 'CN electronics',
+      city: 'MACHAKOS ',
+      owner: 'Carleb musyoka',
+      website: '',
     },
   ]);
 
@@ -116,10 +225,10 @@ export default () => {
     // Set the request endpoint.
     let endpoint = `${baseUrl}/TableSearchJson?config=directoryMachakosJson&page=${page}`;
 
-    // Check if a filter term was provided.
+    // Append a filter term if it was provided.
     endpoint = filter ? `${endpoint}&categories=${filter}` : endpoint;
 
-    // Check if a search term was provided.
+    // Append a search term if it was provided.
     endpoint = search
       ? `${endpoint}&${new URLSearchParams({ search }).toString()}`
       : endpoint;

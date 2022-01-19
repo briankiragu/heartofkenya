@@ -4,6 +4,10 @@
     sans-serif;
 }
 
+.load-more button:focus {
+  box-shadow: none;
+}
+
 @media only screen and (max-width: 876px) {
   .business-filter .card {
     border: none;

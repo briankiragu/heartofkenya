@@ -51,7 +51,26 @@ export default {
           />
 
           <!-- Businesses. -->
-          <BusinessList :businesses="businesses" />
+          <BusinessList :businesses="businesses" class="mb-2" />
+
+          <div class="load-more pb-5 d-flex justify-content-center">
+            <!-- Show more button -->
+            <button
+              type="button"
+              class="btn btn-link px-3 text-decoration-none"
+              @click.prevent="onLoadMore"
+            >
+              Show<span v-show="isLoading">ing</span> more
+
+              <!-- Show loader. -->
+              <img
+                v-show="isLoading"
+                src="../assets/loaders/loading.svg"
+                alt="Preloader"
+                width="40"
+              />
+            </button>
+          </div>
         </div>
       </div>
 
@@ -88,6 +107,41 @@ export default {
     const isLoading = Vue.ref(true);
     // eslint-disable-next-line no-undef
     const pageNo = Vue.ref(1);
+
+    /**
+     * Manually load more businesses from the API.
+     *
+     * @returns void
+     * @author Brian K. Kiragu <bkariuki@hotmail.com>
+     */
+    const onLoadMore = () => {
+      // Set the state to loading.
+      isLoading.value = true;
+
+      // Add the page count.
+      pageNo.value += 1;
+
+      // Get the requests as per the filter and search term.
+      getBusinesses(pageNo.value, filterTerm.value, searchTerm.value)
+        .then((response) => {
+          // Check if any new data was returned.
+          if (response.data.length > 0) {
+            // Update the businesses with the incoming data.
+            businesses.value.push(...response.data);
+          } else {
+            // Decrement the page counter.
+            pageNo.value -= 1;
+          }
+        })
+        .catch(() => {
+          // Decrement the page counter.
+          pageNo.value -= 1;
+        })
+        .finally(() => {
+          // Set the state from loading.
+          isLoading.value = false;
+        });
+    };
 
     // Fetch the data when the component is mounted.
     // eslint-disable-next-line no-undef
@@ -127,37 +181,6 @@ export default {
         })
         // eslint-disable-next-line no-console
         .catch((err) => console.error(err.message));
-
-      // Add a listener to fetch more records on scroll-to-bottom.
-      window.onscroll = () => {
-        if (window.innerHeight + window.scrollY >= document.body.scrollHeight) {
-          // Set the state to loading.
-          isLoading.value = true;
-
-          // Add the page count.
-          pageNo.value += 1;
-
-          // Get the requests as per the filter and search term.
-          getBusinesses(pageNo.value, filterTerm.value, searchTerm.value)
-            .then((response) => {
-              // Check if any new data was returned.
-              if (response.data.length > 0) {
-                // Update the businesses with the incoming data.
-                businesses.value.push(...response.data);
-              } else {
-                // Decrement the page counter.
-                pageNo.value -= 1;
-              }
-            })
-            .catch(() => {
-              // Decrement the page counter.
-              pageNo.value -= 1;
-            });
-
-          // Set the state from loading.
-          isLoading.value = false;
-        }
-      };
 
       // Set from loading.
       isLoading.value = false;
@@ -208,6 +231,7 @@ export default {
       categories,
       businesses,
       onSubmit,
+      onLoadMore,
     };
   },
 };
