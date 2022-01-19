@@ -17,84 +17,90 @@ const getFormData = (input, formId = 'BusinessDirectory') => {
 };
 
 export default () => {
+  // eslint-disable-next-line no-undef
   const searchTerm = Vue.ref('');
+  // eslint-disable-next-line no-undef
   const filterTerm = Vue.ref('');
 
+  // eslint-disable-next-line no-undef
   const categories = Vue.ref([
-    // {
-    //   param: 'automotive',
-    //   title: 'Automotive',
-    //   status: 'Active',
-    // },
-    // {
-    //   param: 'beauty',
-    //   title: 'Beauty and Health',
-    //   status: 'Active',
-    // },
-    // {
-    //   param: 'bookstores',
-    //   title: 'Book Stores',
-    //   status: 'Active',
-    // },
-    // {
-    //   param: 'clothing',
-    //   title: 'Clothing Store',
-    //   status: 'Active',
-    // },
-    // {
-    //   param: 'electronics',
-    //   title: 'Electronics',
-    //   status: 'Active',
-    // },
-    // {
-    //   param: 'general',
-    //   title: 'General Store',
-    //   status: 'Active',
-    // },
-    // {
-    //   param: 'hotels',
-    //   title: 'Hotels',
-    //   status: 'Active',
-    // },
-    // {
-    //   param: 'restaurants',
-    //   title: 'Restaurants',
-    //   status: 'Active',
-    // },
-    // {
-    //   param: 'shoes',
-    //   title: 'Shoes',
-    //   status: 'Active',
-    // },
+    {
+      param: 'automotive',
+      title: 'Automotive',
+      status: 'Active',
+    },
+    {
+      param: 'beauty',
+      title: 'Beauty and Health',
+      status: 'Active',
+    },
+    {
+      param: 'bookstores',
+      title: 'Book Stores',
+      status: 'Active',
+    },
+    {
+      param: 'clothing',
+      title: 'Clothing Store',
+      status: 'Active',
+    },
+    {
+      param: 'electronics',
+      title: 'Electronics',
+      status: 'Active',
+    },
+    {
+      param: 'general',
+      title: 'General Store',
+      status: 'Active',
+    },
+    {
+      param: 'hotels',
+      title: 'Hotels',
+      status: 'Active',
+    },
+    {
+      param: 'restaurants',
+      title: 'Restaurants',
+      status: 'Active',
+    },
+    {
+      param: 'shoes',
+      title: 'Shoes',
+      status: 'Active',
+    },
   ]);
+  // eslint-disable-next-line no-undef
   const businesses = Vue.ref([
-    // {
-    //   directoryIdx: 4,
-    //   category: 'Beauty',
-    //   title: 'Ruth Beauty Parlour',
-    //   city: 'Machakos',
-    //   owner: 'Bernard',
-    //   website: 'https://heartofkenya.com/machakos/ruth_beauty_parlour',
-    // },
-    // {
-    //   directoryIdx: 1,
-    //   category: 'bookstores',
-    //   title: 'Chap Chap Enterprise',
-    //   city: 'Machakos',
-    //   owner: 'Richard Wasike',
-    //   website: 'https://heartofkenya.com/machakos/chapchap',
-    // },
-    // {
-    //   directoryIdx: 6,
-    //   category: 'general',
-    //   title: 'Remnant General Shop',
-    //   city: 'Machakos',
-    //   owner: 'John Musembi',
-    //   website: 'https://heartofkenya.com/machakos/remnant',
-    // },
+    {
+      directoryIdx: 4,
+      category: 'Beauty',
+      title: 'Ruth Beauty Parlour',
+      city: 'Machakos',
+      owner: 'Bernard',
+      website: 'https://heartofkenya.com/machakos/ruth_beauty_parlour',
+    },
+    {
+      directoryIdx: 1,
+      category: 'bookstores',
+      title: 'Chap Chap Enterprise',
+      city: 'Machakos',
+      owner: 'Richard Wasike',
+      website: 'https://heartofkenya.com/machakos/chapchap',
+    },
+    {
+      directoryIdx: 6,
+      category: 'general',
+      title: 'Remnant General Shop',
+      city: 'Machakos',
+      owner: 'John Musembi',
+      website: 'https://heartofkenya.com/machakos/remnant',
+    },
   ]);
 
+  // eslint-disable-next-line no-undef
   const hasCategories = Vue.computed(() => categories.value.length > 0);
+  // eslint-disable-next-line no-undef
   const hasBusinesses = Vue.computed(() => businesses.value.length > 0);
 
   /**
@@ -131,13 +137,13 @@ export default () => {
   };
 
   /**
-  * Function to query categories.
-  *
-  * @param page {number} The page number.
-  * @param term {null | string} The search term
-  * @returns Promise</ICategory[]>
-  * @author Brian K. Kiragu <bkariuki@hotmail.com>
-  */
+   * Function to query categories.
+   *
+   * @param page {number} The page number.
+   * @param term {null | string} The search term
+   * @returns Promise</ICategory[]>
+   * @author Brian K. Kiragu <bkariuki@hotmail.com>
+   */
   const getCategories = async (page = 1, term = null) => {
     // Set the request endpoint.
     let endpoint = `${baseUrl}/TableSearchJson?config=businessCategories&page=${page}`;
@@ -181,7 +187,7 @@ export default () => {
         // Add the 'library' from the global variables.
         // eslint-disable-next-line no-undef
         { library, ...data },
-        'BusinessDirectory',
+        'BusinessDirectory'
       ),
     });
 
@@ -213,10 +219,7 @@ export default () => {
     // Launch the request.
     const response = await fetch(endpoint, {
       method: 'POST',
-      body: getFormData(
-        { ...data, ...{ directoryIdx } },
-        'BusinessDirectory',
-      ),
+      body: getFormData({ ...data, ...{ directoryIdx } }, 'BusinessDirectory'),
     });
 
     // Check for errors.

@@ -4,6 +4,12 @@
     sans-serif;
 }
 
+@media only screen and (max-width: 876px) {
+  .business-filter .card {
+    border: none;
+  }
+}
+
 .business-filter button {
   box-shadow: none;
   text-decoration: none;
@@ -25,12 +31,21 @@
   font-size: 0.94rem;
   font-weight: 400;
 }
+.business-filter__items {
+  -ms-overflow-style: none; /* Edge, Internet Explorer */
+  scrollbar-width: none; /* Firefox */
+  overflow-x: scroll;
+}
+
+.business-filter__items::-webkit-scrollbar {
+  display: none; /* Chrome, Safari, Opera */
+}
 
 .business-filter-item {
   border: 0.125rem solid rgba(73, 69, 69, 0.25);
-  border-radius: 14px;
+  border-radius: 10px;
   cursor: pointer;
-  padding: 5px 16px;
+  padding: 5px 15px;
   transition: all 0.2s cubic-bezier(0.075, 0.82, 0.165, 1);
 }
 .business-filter-item__icon {

@@ -1,13 +1,17 @@
+// eslint-disable-next-line no-undef
 const BusinessFilterItem = Vue.defineAsyncComponent(
   // eslint-disable-next-line import/extensions
-  () => import('./BusinessFilterItem.vue.js'),
+  () => import('./BusinessFilterItem.vue.js')
 );
 
 export default {
   template: `
      <div id="categoryAccordion" class="business-filter accordion">
       <div class="card">
-        <div id="categoryHeading" class="card-header">
+        <!-- Card Header -->
+        <div id="categoryHeading"
+          class="card-header p-md-2 p-lg-3 d-none d-md-block"
+        >
           <button
             class="
               btn btn-link btn-block
@@ -35,6 +39,7 @@ export default {
           </button>
         </div>
 
+        <!-- Card Body -->
         <div
           id="filterCollapse"
           class="collapse"
@@ -42,13 +47,13 @@ export default {
           aria-labelledby="categoryHeading"
           data-parent="#categoryAccordion"
         >
-          <div class="card-body">
-            <div v-if="hasItems" class="business-filter__items d-flex flex-wrap">
+          <div class="card-body p-0 p-md-2 p-lg-4">
+            <div v-if="hasItems" class="business-filter__items d-flex flex-md-wrap">
               <BusinessFilterItem
                 v-for="item of items"
                 :key="item.param"
                 :item="item"
-                class="mb-2 mr-2"
+                class="mb-2 mr-1"
                 :active="filters.includes(item.param)"
                 @selected="updateFilters"
               />
@@ -74,13 +79,17 @@ export default {
 
   setup(props, { emit }) {
     // Count the number of filters.
+    // eslint-disable-next-line no-undef
     const filterCount = Vue.computed(() => props.items.length);
+    // eslint-disable-next-line no-undef
     const isExpanded = Vue.computed(() => props.items.length <= 10);
 
     // Applied filters.
+    // eslint-disable-next-line no-undef
     const filters = Vue.ref([]);
 
     // Check if there are any filter items.
+    // eslint-disable-next-line no-undef
     const hasItems = Vue.computed(() => props.items.length > 0);
 
     // When a filter item is selected.
@@ -101,12 +110,17 @@ export default {
     };
 
     // Pre-fill the filters.
+    // eslint-disable-next-line no-undef
     Vue.onMounted(() => {
       filters.value = props.modelValue.split(',').filter((val) => val);
     });
 
     return {
-      filters, hasItems, filterCount, isExpanded, updateFilters,
+      filters,
+      hasItems,
+      filterCount,
+      isExpanded,
+      updateFilters,
     };
   },
 };

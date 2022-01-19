@@ -1,16 +1,24 @@
 // eslint-disable-next-line import/extensions
 import useBackend from '../composables/useBackend.js';
 
+// eslint-disable-next-line no-undef
 const BusinessFilter = Vue.defineAsyncComponent(() =>
+  // eslint-disable-next-line import/extensions
   import('./BusinessFilter.vue.js')
 );
+// eslint-disable-next-line no-undef
 const BusinessSearchbar = Vue.defineAsyncComponent(() =>
+  // eslint-disable-next-line import/extensions
   import('./BusinessSearchbar.vue.js')
 );
+// eslint-disable-next-line no-undef
 const BusinessForm = Vue.defineAsyncComponent(() =>
+  // eslint-disable-next-line import/extensions
   import('./BusinessForm.vue.js')
 );
+// eslint-disable-next-line no-undef
 const BusinessList = Vue.defineAsyncComponent(() =>
+  // eslint-disable-next-line import/extensions
   import('./BusinessList.vue.js')
 );
 
@@ -76,10 +84,13 @@ export default {
     const hasDirectoryCategory = directoryCategory !== '';
 
     // Declare data properties.
+    // eslint-disable-next-line no-undef
     const isLoading = Vue.ref(true);
+    // eslint-disable-next-line no-undef
     const pageNo = Vue.ref(1);
 
     // Fetch the data when the component is mounted.
+    // eslint-disable-next-line no-undef
     Vue.onMounted(() => {
       // Set to loading.
       isLoading.value = true;
@@ -94,6 +105,7 @@ export default {
       searchTerm.value = search;
 
       // Set the category filter depending on the Directory Category or search URL params.
+      // eslint-disable-next-line no-undef
       filterTerm.value = hasDirectoryCategory ? directoryCategory : category;
 
       // Get the first businesses on page load.
@@ -152,6 +164,7 @@ export default {
     });
 
     // Setup a watcher for the filter and search terms.
+    // eslint-disable-next-line no-undef
     Vue.watch([filterTerm, searchTerm], (val) => {
       // Set the state to loading.
       isLoading.value = true;
@@ -184,6 +197,7 @@ export default {
     };
 
     // Provide the categories and updateBusiness to the children.
+    // eslint-disable-next-line no-undef
     Vue.provide('categories', categories);
 
     return {

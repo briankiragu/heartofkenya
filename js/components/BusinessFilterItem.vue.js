@@ -1,7 +1,7 @@
 export default {
   template: `
     <div
-      class="business-filter-item"
+      class="business-filter-item d-flex flex-row"
       :class="{ active }"
       @click.prevent="onSelect(item.param)"
     >
@@ -17,7 +17,7 @@ export default {
 
   name: 'BusinessFilterItem',
   props: {
-    item: { type: Object, default: () => { } },
+    item: { type: Object, default: () => {} },
     active: { type: Boolean, default: () => false },
   },
   emits: ['selected'],
