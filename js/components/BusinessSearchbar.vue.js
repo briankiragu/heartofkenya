@@ -1,24 +1,27 @@
 export default {
   template: `
-    <div class="business-searchbar form-row mb-3">
+    <div class="business-searchbar row mb-3">
       <div class="col mb-2">
         <input
           type="search"
           class="form-control"
           placeholder="Search for a business"
-          autocomplete="organization"
           :value="modelValue"
           @input.prevent="onSearch($event)"
+          autocomplete="organization"
         />
       </div>
+
       <div class="col-md-2">
-        <button
-          type="submit"
-          class="btn btn-block btn-primary"
-          @click.prevent="() => onSubmit()"
-        >
-          Search
-        </button>
+        <div class="d-grid gap-2">
+          <button
+            type="submit"
+            class="btn btn-primary"
+            @click.prevent="() => onSubmit()"
+          >
+            Search
+          </button>
+        </div>
       </div>
     </div>
   `,
