@@ -8,7 +8,7 @@ export default {
     <!-- Button trigger modal -->
     <button
       type="button"
-      class="business-list-item-edit__trigger btn btn-outline-primary"
+      class="business-form__trigger btn btn-outline-primary"
       data-bs-toggle="modal"
       :data-bs-target="'#business' + order + 'Backdrop'"
       v-bind="$attrs"
@@ -20,7 +20,7 @@ export default {
     <teleport to="#business-modals">
       <div
         :id="'business' + order + 'Backdrop'"
-        class="modal fade"
+        class="business-form__modal modal fade"
         data-bs-backdrop="static"
         data-bs-keyboard="false"
         tabindex="-1"
@@ -35,19 +35,22 @@ export default {
               </h5>
               <button
                 type="button"
-                class="close"
+                class="btn-close"
                 data-bs-dismiss="modal"
                 aria-label="Close"
-              >
-                <span aria-hidden="true">&times;</span>
-              </button>
+              ></button>
             </div>
 
             <!-- Modal body. -->
-            <div class="modal-body">
+            <div class="modal-body row g-3">
               <!-- Title. -->
-              <div class="form-group">
-                <label :for="'business-' + order + '-title'">Title*</label>
+              <div class="col-12">
+                <label
+                  :for="'business-' + order + '-title'"
+                  class="form-label"
+                >
+                  Title*
+                </label>
                 <input
                   :id="'business-' + order + '-title'"
                   v-model="businessForm.title"
@@ -61,8 +64,8 @@ export default {
               </div>
 
               <!-- Category. -->
-              <div v-if="categories" class="form-group">
-                <label :for="'business-' + order + '-category'">Category*</label>
+              <div v-if="categories" class="col-12">
+                <label class="form-label" :for="'business-' + order + '-category'">Category*</label>
                 <input
                   :id="'business-' + order + '-category'"
                   v-model="businessForm.category"
@@ -82,41 +85,40 @@ export default {
                 </datalist>
               </div>
 
-              <div class="form-row">
-                <!-- Phone Number. -->
-                <div class="form-group col-md-5">
-                  <label :for="'business-' + order + '-phone'">Phone Number</label>
-                  <input
-                    :id="'business-' + order + '-phone'"
-                    v-model.number="businessForm.phone"
-                    type="number"
-                    name="phone"
-                    class="form-control"
-                    placeholder="254 7## ### ###"
-                    minLength="9"
-                    maxlength="12"
-                    autocomplete="tel"
-                  />
-                </div>
 
-                <!-- Email. -->
-                <div class="form-group col">
-                  <label :for="'business-' + order + '-email'">Email Addresss</label>
-                  <input
-                    :id="'business-' + order + '-email'"
-                    v-model="businessForm.email"
-                    type="email"
-                    name="email"
-                    class="form-control"
-                    placeholder="email@example.co.ke"
-                    autocomplete="email"
-                  />
-                </div>
+              <!-- Phone Number. -->
+              <div class="col-12">
+                <label class="form-label" :for="'business-' + order + '-phone'">Phone Number</label>
+                <input
+                  :id="'business-' + order + '-phone'"
+                  v-model.number="businessForm.phone"
+                  type="number"
+                  name="phone"
+                  class="form-control"
+                  placeholder="254 7## ### ###"
+                  minLength="9"
+                  maxlength="12"
+                  autocomplete="tel"
+                />
+              </div>
+
+              <!-- Email. -->
+              <div class="col-12">
+                <label class="form-label" :for="'business-' + order + '-email'">Email Addresss</label>
+                <input
+                  :id="'business-' + order + '-email'"
+                  v-model="businessForm.email"
+                  type="email"
+                  name="email"
+                  class="form-control"
+                  placeholder="email@example.co.ke"
+                  autocomplete="email"
+                />
               </div>
 
               <!-- Website. -->
-              <div class="form-group">
-                <label :for="'business-' + order + '-website'">Website</label>
+              <div class="col-12">
+                <label class="form-label" :for="'business-' + order + '-website'">Website</label>
                 <input
                   :id="'business-' + order + '-website'"
                   v-model="businessForm.website"
@@ -128,40 +130,38 @@ export default {
                 />
               </div>
 
-              <div class="form-row">
-                <!-- City. -->
-                <div class="form-group col-md-5">
-                  <label :for="'business-' + order + '-city'">City*</label>
-                  <input
-                    :id="'business-' + order + '-city'"
-                    v-model="businessForm.city"
-                    type="text"
-                    name="city"
-                    class="form-control"
-                    placeholder="Which city is this in?"
-                    autocomplete="address-level1"
-                    required
-                  />
-                </div>
+              <!-- City. -->
+              <div class="col-12">
+                <label class="form-label" :for="'business-' + order + '-city'">City*</label>
+                <input
+                  :id="'business-' + order + '-city'"
+                  v-model="businessForm.city"
+                  type="text"
+                  name="city"
+                  class="form-control"
+                  placeholder="Which city is this in?"
+                  autocomplete="address-level1"
+                  required
+                />
+              </div>
 
-                <!-- Street Address. -->
-                <div class="form-group col">
-                  <label :for="'business-' + order + '-streetaddress'">Street Address</label>
-                  <input
-                    :id="'business-' + order + '-streetaddress'"
-                    v-model="businessForm.streetaddress"
-                    type="text"
-                    name="streetaddress"
-                    class="form-control"
-                    placeholder="Where is this business located?"
-                    autocomplete="street-address"
-                  />
-                </div>
+              <!-- Street Address. -->
+              <div class="col-12">
+                <label class="form-label" :for="'business-' + order + '-streetaddress'">Street Address</label>
+                <input
+                  :id="'business-' + order + '-streetaddress'"
+                  v-model="businessForm.streetaddress"
+                  type="text"
+                  name="streetaddress"
+                  class="form-control"
+                  placeholder="Where is this business located?"
+                  autocomplete="street-address"
+                />
               </div>
 
               <!-- Directions. -->
-              <div class="form-group">
-                <label :for="'business-' + order + '-directions'">Directions</label>
+              <div class="col-12">
+                <label class="form-label" :for="'business-' + order + '-directions'">Directions</label>
                 <input
                   :id="'business-' + order + '-directions'"
                   v-model="businessForm.directions"
@@ -174,8 +174,8 @@ export default {
               </div>
 
               <!-- Notes. -->
-              <div class="form-group">
-                <label :for="'business-' + order + '-notes'">Notes</label>
+              <div class="col-12">
+                <label class="form-label" :for="'business-' + order + '-notes'">Notes</label>
                 <textarea
                   :id="'business-' + order + '-notes'"
                   v-model="businessForm.notes"
@@ -190,14 +190,14 @@ export default {
             <div class="modal-footer">
               <button
                 type="button"
-                class="btn btn-secondary"
+                class="btn"
                 data-bs-dismiss="modal"
               >
                 Close
               </button>
               <button
                 type="submit"
-                class="btn btn-primary"
+                class="business-form__modal-submit btn"
                 :class="{ disabled: isLoading }"
               >
                 {{ text.submit }}

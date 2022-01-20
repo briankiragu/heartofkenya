@@ -132,6 +132,20 @@ button {
   color: var(--primary-100);
 }
 
+.business-form__modal label {
+  color: var(--neutral-700);
+  font-size: 1rem;
+  font-weight: 500;
+}
+.business-form__modal .form-control {
+  padding: 12px 16px;
+}
+.business-form__modal-submit {
+  background-color: var(--primary-500);
+  color: var(--primary-100);
+  padding: 8px 16px;
+}
+
 .business-list-item {
   border-radius: 7px;
   box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
