@@ -16,7 +16,7 @@ export default {
           v-for="business in businesses"
           :key="business.directoryIdx"
           :business="business"
-          class="mb-4"
+          class="mb-5"
         />
       </div>
 

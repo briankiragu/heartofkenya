@@ -13,8 +13,8 @@ export default {
     <div class="business-list-item card border-0">
       <div class="card-body p-0 d-flex flex-column">
         <div class="business-list-item__body p-4">
-          <div class="d-flex justify-content-between">
-            <h6 class="business-list-item__body-category mb-2">
+          <div class="d-flex justify-content-between align-items-center">
+            <h6 class="business-list-item__body-category">
               <i class="fas fa-bullseye me-1"></i>
               {{ toTitle(business.category) }}
             </h6>
