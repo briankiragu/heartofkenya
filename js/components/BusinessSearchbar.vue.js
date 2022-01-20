@@ -4,7 +4,7 @@ export default {
       <div class="col mb-2">
         <input
           type="search"
-          class="form-control"
+          class="form-control business-searchbar__input"
           placeholder="Search for a business"
           :value="modelValue"
           @input.prevent="onSearch($event)"
@@ -16,7 +16,7 @@ export default {
         <div class="d-grid gap-2">
           <button
             type="submit"
-            class="btn btn-primary"
+            class="btn business-searchbar__button"
             @click.prevent="() => onSubmit()"
           >
             Search

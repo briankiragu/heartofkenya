@@ -137,7 +137,7 @@ export default () => {
       category: 'Blogging ',
       title: 'Blogging web',
       city: 'MACHAKOS ',
-      owner: 'Yes',
+      owner: '',
       website: '',
     },
     {

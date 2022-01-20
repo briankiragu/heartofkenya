@@ -35,6 +35,15 @@ button {
   box-shadow: none;
 }
 
+.business-directory {
+  background-color: var(--neutral-100);
+  font-size: 14px;
+}
+
+.business-filter .accordion-item {
+  background-color: transparent;
+}
+
 @media only screen and (max-width: 876px) {
   .business-filter .accordion-header {
     border: none;
@@ -123,42 +132,53 @@ button {
   color: var(--primary-100);
 }
 
-.business-list {
-  color: #384252;
-}
-
 .business-list-item {
-  margin-bottom: 15px;
-}
-.business-list-item button {
-  box-shadow: none;
-  text-decoration: none;
-}
-.business-list-item button:hover {
-  text-decoration: none;
-}
-.business-list-item button:focus {
-  box-shadow: none;
-  outline: none;
-  text-decoration: none;
-}
-.business-list-item__heading {
-  color: #3b3535;
-  font-size: 1.4rem;
-}
-.business-list-item__subheading {
-  color: #4a4545;
-  font-size: 0.94rem;
+  border-radius: 7px;
+  box-shadow: 0 2px 6px 0 hsla(0, 0%, 0%, 0.2);
+  color: var(--neutral-700);
   font-weight: 400;
 }
-.business-list-item__subheading i {
-  margin-right: 10px;
+
+.business-list-item__body {
+  border-left: 5px solid var(--primary-500);
 }
-.business-list-item__locally-owned {
-  color: #625d5b;
-  font-size: 0.94rem;
-}
-.business-list-item__link {
-  color: #1f5fb2;
+
+.business-list-item__body-category {
+  color: var(--primary-300);
   font-size: 0.9rem;
+  font-weight: 600;
+  text-transform: uppercase;
+}
+.business-list-item__body-website {
+  border: 2px solid var(--primary-500);
+  color: var(--primary-700);
+  padding: 6px 5px 7px 10px;
+}
+.business-list-item__body-title {
+  color: var(--neutral-700);
+  font-weight: 700;
+}
+.business-list-item__body-address {
+  color: var(--neutral-500);
+  font-weight: 400;
+}
+
+.business-list-item__footer {
+  border-bottom-right-radius: 7px;
+  border-left: 5px solid var(--primary-500);
+  background-color: var(--primary-100);
+}
+.business-list-item__footer-title {
+  color: var(--primary-500);
+  font-size: 0.75rem;
+  font-weight: 700;
+}
+.business-list-item__footer-owner {
+  color: var(--neutral-700);
+  font-size: 0.98rem;
+  font-weight: 500;
+}
+.business-list-item__footer-phone {
+  color: var(--neutral-500);
+  font-weight: 400;
 }

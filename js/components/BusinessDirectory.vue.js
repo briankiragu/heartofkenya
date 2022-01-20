@@ -24,7 +24,7 @@ const BusinessList = Vue.defineAsyncComponent(() =>
 
 export default {
   template: `
-    <div class="container-fluid" style="font-size: 14px">
+    <div class="business-directory container-fluid">
       <!-- Modals. -->
       <div id="business-modals"></div>
 

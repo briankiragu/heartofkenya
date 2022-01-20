@@ -10,87 +10,50 @@ const BusinessForm = Vue.defineAsyncComponent(() =>
 
 export default {
   template: `
-     <div class="business-list-item card border-bottom">
-      <div :id="'business-' + business.directoryIdx + '-heading'" class="card-header">
-        <button
-          class="
-            btn btn-link btn-block
-            text-left
-            d-flex
-            justify-content-between
-            align-items-center
-          "
-          type="button"
-          data-toggle="collapse"
-          :data-target="'#business-' + business.directoryIdx + '-collapse'"
-          aria-expanded="false"
-          :aria-controls="'business-' + business.directoryIdx + '-collapse'"
-        >
-          <div class="business-list-item__title">
-            <h2 class="business-list-item__heading mb-2 mb-md-1">
-              <span>{{ toTitle(business.title) }}</span><br />
-              <a
-                v-if="hasWebsite"
-                title="Visit Website"
-                class="business-list-item__link"
-                :href="business.website"
-                target="_blank"
-              >
-                Visit Website <i class="fas fa-external-link-alt"></i>
-              </a>
-            </h2>
-            <h5 v-if="hasOwner" class="business-list-item__locally-owned my-1">
-              <i class="fas fa-star"></i> Local
-            </h5>
-            <h4
-              class="business-list-item__subheading mb-0 d-flex align-items-start"
+    <div class="business-list-item card border-0">
+      <div class="card-body p-0 d-flex flex-column">
+        <div class="business-list-item__body p-4">
+          <div class="d-flex justify-content-between">
+            <h6 class="business-list-item__body-category mb-2">
+              <i class="fas fa-bullseye me-1"></i>
+              {{ toTitle(business.category) }}
+            </h6>
+
+            <!-- Link to website. -->
+            <a
+              v-if="hasWebsite"
+              :href="business.website"
+              target="_blank"
+              class="business-list-item__body-website rounded-circle"
             >
-              {{ toTitle(business.category) }} in
-              <em class="ms-1">{{ toTitle(business.city) }}</em>
-            </h4>
+              <i class="fas fa-external-link-alt me-1"></i>
+            </a>
           </div>
+          <h5 class="business-list-item__body-title mb-1">
+            {{ toTitle(business.title) }}
+          </h5>
+          <h6 class="business-list-item__body-address mb-1">
+            {{ toTitle(business.streetaddress) }}
+            {{ toTitle(business.directions) }}
+          </h6>
+        </div>
 
-          <div class="business-list-item__icon">
-            <i class="fas fa-caret-down"></i>
+        <div v-if="hasOwner" class="business-list-item__footer p-4">
+          <h6 class="business-list-item__footer-title">OWNED BY</h6>
+          <div class="d-flex flex-column">
+            <a
+              :href="'mailto:' + business.email"
+              class="business-list-item__footer-owner mb-0 text-decoration-none"
+            >
+              {{ toTitle(business.owner) }}
+            </a>
+            <a
+              :href="'tel:' + business.phone"
+              class="business-list-item__footer-phone text-decoration-none"
+            >
+              {{ business.phone }}
+            </a>
           </div>
-        </button>
-      </div>
-
-      <div
-        :id="'business-' + business.directoryIdx + '-collapse'"
-        class="collapse"
-        :aria-labelledby="'business-' + business.directoryIdx + '-heading'"
-        data-parent="#business-directory-accordion"
-      >
-        <div class="card-body table-responsive">
-          <!-- Business info. -->
-          <table class="table table-hover mt-0">
-            <tbody>
-              <tr v-if="business.owner">
-                <th scope="row">Owned By</th>
-                <td>{{ business.owner }}</td>
-              </tr>
-              <tr v-if="business.phone">
-                <th scope="row">Phone Number</th>
-                <td>{{ business.phone }}</td>
-              </tr>
-              <tr v-if="business.email">
-                <th scope="row">Email Address</th>
-                <td>{{ business.email }}</td>
-              </tr>
-              <tr v-if="business.streetaddress">
-                <th scope="row">Street Address</th>
-                <td>{{ business.streetaddress }}</td>
-              </tr>
-              <tr v-if="business.directions">
-                <th scope="row">Directions</th>
-                <td>{{ business.directions }}</td>
-              </tr>
-            </tbody>
-          </table>
-
-          <!--Edit button. -->
-          <BusinessForm :order="business.directoryIdx" :business="business" />
         </div>
       </div>
     </div>
