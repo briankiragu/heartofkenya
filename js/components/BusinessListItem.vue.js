@@ -33,8 +33,8 @@ export default {
             {{ toTitle(business.title) }}
           </h5>
           <h6 class="business-list-item__body-address mb-1">
-            {{ toTitle(business.streetaddress) }}
-            {{ toTitle(business.directions) }}
+            {{ business.streetaddress }}
+            {{ business.directions }}
           </h6>
         </div>
 

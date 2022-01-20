@@ -9,8 +9,8 @@ export default {
     <button
       type="button"
       class="business-list-item-edit__trigger btn btn-outline-primary"
-      data-toggle="modal"
-      :data-target="'#business' + order + 'Backdrop'"
+      data-bs-toggle="modal"
+      :data-bs-target="'#business' + order + 'Backdrop'"
       v-bind="$attrs"
     >
       <slot>{{ text.trigger }}</slot>
@@ -21,8 +21,8 @@ export default {
       <div
         :id="'business' + order + 'Backdrop'"
         class="modal fade"
-        data-backdrop="static"
-        data-keyboard="false"
+        data-bs-backdrop="static"
+        data-bs-keyboard="false"
         tabindex="-1"
         :aria-labelledby="'business' + order + 'BackdropLabel'"
         aria-hidden="true"
@@ -36,7 +36,7 @@ export default {
               <button
                 type="button"
                 class="close"
-                data-dismiss="modal"
+                data-bs-dismiss="modal"
                 aria-label="Close"
               >
                 <span aria-hidden="true">&times;</span>
@@ -191,7 +191,7 @@ export default {
               <button
                 type="button"
                 class="btn btn-secondary"
-                data-dismiss="modal"
+                data-bs-dismiss="modal"
               >
                 Close
               </button>
