@@ -77,14 +77,9 @@ export default {
     // eslint-disable-next-line no-undef
     const hasWebsite = Vue.computed(() => !!props.business.website);
 
-    // Check if the business has any data.
-    // eslint-disable-next-line no-undef
-    const hasData = Vue.computed(() => hasOwner.value || hasWebsite.value);
-
     return {
       hasOwner,
       hasWebsite,
-      hasData,
       toTitle,
     };
   },
