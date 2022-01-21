@@ -42,8 +42,16 @@ export default () => {
    * @author Brian K. Kiragu <bkariuki@hotmail.com>
    */
   const getBusinesses = async (page = 1, filter = null, search = null) => {
+    // Get the search params.
+    const searchParams = new URLSearchParams({
+      config: 'directoryJson',
+      page,
+      // eslint-disable-next-line no-undef
+      library,
+    }).toString();
+
     // Set the request endpoint.
-    let endpoint = `${baseUrl}/TableSearchJson?config=directoryMachakosJson&page=${page}`;
+    let endpoint = `${baseUrl}/TableSearchJson?${searchParams}`;
 
     // Append a filter term if it was provided.
     endpoint = filter ? `${endpoint}&categories=${filter}` : endpoint;
