@@ -1,24 +1,21 @@
-// eslint-disable-next-line import/extensions
+/* eslint-disable import/extensions */
+/* eslint-disable import/no-unresolved */
 import useBackend from '../composables/useBackend.js';
 
 // eslint-disable-next-line no-undef
 const BusinessFilter = Vue.defineAsyncComponent(() =>
-  // eslint-disable-next-line import/extensions
   import('./BusinessFilter.vue.js')
 );
 // eslint-disable-next-line no-undef
 const BusinessSearchBar = Vue.defineAsyncComponent(() =>
-  // eslint-disable-next-line import/extensions
   import('./BusinessSearchBar.vue.js')
 );
 // eslint-disable-next-line no-undef
 const BusinessForm = Vue.defineAsyncComponent(() =>
-  // eslint-disable-next-line import/extensions
   import('./BusinessForm.vue.js')
 );
 // eslint-disable-next-line no-undef
 const BusinessList = Vue.defineAsyncComponent(() =>
-  // eslint-disable-next-line import/extensions
   import('./BusinessList.vue.js')
 );
 
