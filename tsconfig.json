@@ -5,5 +5,11 @@
     "strict": true,
     "jsx": "preserve",
     "moduleResolution": "node"
-  }
+  },
+  "include": [
+    "js/**/*"
+  ],
+  "exclude": [
+    "node_modules"
+  ]
 }
