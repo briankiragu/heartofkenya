@@ -12,14 +12,14 @@ export default {
         />
       </div>
 
-      <div class="col-md-2">
+      <div class="col-3 col-md-2">
         <div class="d-grid gap-2">
           <button
             type="submit"
             class="btn business-searchbar__button"
             @click.prevent="() => onSubmit()"
           >
-            Search
+            <i class="fas fa-search-location"></i>
           </button>
         </div>
       </div>
