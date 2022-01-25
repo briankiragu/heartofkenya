@@ -37,14 +37,14 @@ export default {
           <BusinessSearchBar
             v-model="searchTerm"
             :on-submit="onSubmit"
-            class="mb-5 mb-md-4"
+            class="mb-4 mb-md-4"
           />
 
           <!-- New business modal. -->
           <BusinessForm
             order="newBusiness"
             action="store"
-            class="align-self-end mb-4"
+            class="align-self-start mb-3"
           />
 
           <!-- Businesses. -->

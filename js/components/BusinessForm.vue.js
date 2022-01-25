@@ -8,11 +8,12 @@ export default {
     <!-- Button trigger modal -->
     <button
       type="button"
-      class="business-form__trigger btn btn-outline-primary"
+      class="business-form__trigger btn"
       data-bs-toggle="modal"
       :data-bs-target="'#business' + order + 'Backdrop'"
       v-bind="$attrs"
     >
+      <i class="fas fa-plus me-2"></i>
       <slot>{{ text.trigger }}</slot>
     </button>
 
@@ -44,7 +45,7 @@ export default {
             <!-- Modal body. -->
             <div class="modal-body row g-3">
               <!-- Title. -->
-              <div class="col-12">
+              <div class="col-12 mb-2">
                 <label
                   :for="'business-' + order + '-title'"
                   class="form-label"
@@ -64,7 +65,7 @@ export default {
               </div>
 
               <!-- Category. -->
-              <div v-if="categories" class="col-12">
+              <div v-if="categories" class="col-12 mb-2">
                 <label class="form-label" :for="'business-' + order + '-category'">Category*</label>
                 <input
                   :id="'business-' + order + '-category'"
@@ -85,9 +86,11 @@ export default {
                 </datalist>
               </div>
 
+              <!-- Divider -->
+              <div class="business-form__modal-divider col mx-2"></div>
 
               <!-- Phone Number. -->
-              <div class="col-12">
+              <div class="col-12 mb-2">
                 <label class="form-label" :for="'business-' + order + '-phone'">Phone Number</label>
                 <input
                   :id="'business-' + order + '-phone'"
@@ -103,7 +106,7 @@ export default {
               </div>
 
               <!-- Email. -->
-              <div class="col-12">
+              <div class="col-12 mb-2">
                 <label class="form-label" :for="'business-' + order + '-email'">Email Addresss</label>
                 <input
                   :id="'business-' + order + '-email'"
@@ -117,7 +120,7 @@ export default {
               </div>
 
               <!-- Website. -->
-              <div class="col-12">
+              <div class="col-12 mb-2">
                 <label class="form-label" :for="'business-' + order + '-website'">Website</label>
                 <input
                   :id="'business-' + order + '-website'"
@@ -130,8 +133,11 @@ export default {
                 />
               </div>
 
+              <!-- Divider -->
+              <div class="business-form__modal-divider col mx-2"></div>
+
               <!-- City. -->
-              <div class="col-12">
+              <div class="col-12 mb-2">
                 <label class="form-label" :for="'business-' + order + '-city'">City*</label>
                 <input
                   :id="'business-' + order + '-city'"
@@ -146,7 +152,7 @@ export default {
               </div>
 
               <!-- Street Address. -->
-              <div class="col-12">
+              <div class="col-12 mb-2">
                 <label class="form-label" :for="'business-' + order + '-streetaddress'">Street Address</label>
                 <input
                   :id="'business-' + order + '-streetaddress'"
@@ -160,7 +166,7 @@ export default {
               </div>
 
               <!-- Directions. -->
-              <div class="col-12">
+              <div class="col-12 mb-2">
                 <label class="form-label" :for="'business-' + order + '-directions'">Directions</label>
                 <input
                   :id="'business-' + order + '-directions'"
@@ -173,8 +179,11 @@ export default {
                 />
               </div>
 
+              <!-- Divider -->
+              <div class="business-form__modal-divider col mx-2"></div>
+
               <!-- Notes. -->
-              <div class="col-12">
+              <div class="col-12 mb-2">
                 <label class="form-label" :for="'business-' + order + '-notes'">Notes</label>
                 <textarea
                   :id="'business-' + order + '-notes'"
@@ -225,7 +234,7 @@ export default {
 
     // Get the form text content.
     const text = {
-      trigger: props.action === 'update' ? 'Suggest an edit' : 'Add a Business',
+      trigger: props.action === 'update' ? 'Suggest an edit' : 'Add a business',
       title:
         props.action === 'update'
           ? `Edit ${props.business.title}`
