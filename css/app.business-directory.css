@@ -9,6 +9,7 @@
   --primary-900: hsl(var(--primary-hs) 9%);
 
   --neutral-100: hsl(var(--neutral-hs) 96%);
+  --neutral-200: hsl(var(--neutral-hs) 90%);
   --neutral-300: hsl(var(--neutral-hs) 83%);
   --neutral-500: hsl(var(--neutral-hs) 45%);
   --neutral-700: hsl(var(--neutral-hs) 29%);
@@ -109,36 +110,56 @@ button {
   color: var(--primary-100);
 }
 
-.business-searchbar__button {
-  background-color: var(--primary-500);
-  color: var(--primary-100);
-}
 .business-searchbar__input,
 .business-searchbar__button {
-  font-size: 1rem;
-  font-weight: 400;
+  border: none;
   height: 53px;
   transition: all 0.3s ease-in-out;
 }
 .business-searchbar__input {
+  background-color: var(--neutral-200);
+  color: var(--neutral-900);
   padding: 23px;
 }
 .business-searchbar__input:focus,
 .business-searchbar__button:hover,
 .business-searchbar__button:focus {
   border: none;
-  box-shadow: rgba(50, 50, 93, 0.25) 0px 6px 12px -2px,
-    rgba(0, 0, 0, 0.3) 0px 3px 7px -3px;
-  color: var(--primary-100);
+  box-shadow: var(--neutral-300) 0px 6px 12px -2px,
+    var(--neutral-700) 0px 3px 7px -3px;
+  color: var(--neutral-700);
 }
 
+.business-searchbar__button {
+  background-color: var(--primary-500);
+  color: var(--primary-100);
+}
+.business-searchbar__button i {
+  font-size: 1.2rem;
+}
+.business-searchbar__button:hover,
+.business-searchbar__button:focus {
+  color: var(--neutral-100);
+}
+
+.business-form__trigger {
+  color: var(--primary-700);
+}
 .business-form__modal label {
   color: var(--neutral-700);
-  font-size: 1rem;
-  font-weight: 500;
+  font-size: 0.9rem;
+  font-weight: 600;
 }
 .business-form__modal .form-control {
+  background-color: var(--neutral-100);
+  border: none;
+  color: var(--neutral-700);
   padding: 12px 16px;
+}
+.business-form__modal-divider {
+  border-top: 1px solid var(--neutral-300);
+  margin-bottom: 0.5rem;
+  margin-top: 2rem;
 }
 .business-form__modal-submit {
   background-color: var(--primary-500);
@@ -158,7 +179,7 @@ button {
 }
 
 .business-list-item__body-category {
-  color: var(--primary-300);
+  color: var(--primary-500);
   font-size: 0.9rem;
   font-weight: 600;
   text-transform: uppercase;
@@ -174,8 +195,10 @@ button {
   color: var(--primary-100);
 }
 .business-list-item__body-title {
-  color: var(--neutral-700);
-  font-weight: 700;
+  color: var(--neutral-900);
+  font-size: 1.3rem;
+  font-weight: 600;
+  letter-spacing: 0.5px;
 }
 .business-list-item__body-address {
   color: var(--neutral-500);
@@ -185,19 +208,25 @@ button {
 .business-list-item__footer {
   border-bottom-right-radius: 7px;
   border-left: 5px solid var(--primary-500);
-  background-color: var(--primary-100);
+  background-color: var(--primary-300);
 }
 .business-list-item__footer-title {
-  color: var(--primary-500);
-  font-size: 0.75rem;
+  color: var(--primary-700);
+  font-size: 0.85rem;
   font-weight: 700;
 }
 .business-list-item__footer-owner {
-  color: var(--neutral-700);
+  color: var(--neutral-500);
   font-size: 0.98rem;
-  font-weight: 500;
+  font-weight: 600;
+  margin-bottom: 1px;
 }
 .business-list-item__footer-phone {
-  color: var(--neutral-500);
-  font-weight: 400;
+  color: var(--neutral-700);
+  font-size: 1.05rem;
+  font-weight: 700;
+}
+
+.business-list-item__footer-phone i {
+  font-size: 1.5rem;
 }
