@@ -29,6 +29,7 @@ const Marketplace = {
 		// Define the state of the products view (gallery or list)
 		// eslint-disable-next-line no-undef
 		const state = Vue.ref({
+			sort: "newest",
 			view: "gallery",
 		});
 
@@ -130,9 +131,19 @@ const Marketplace = {
 
       <!-- Products -->
       <section class="p-2 row g-3 g-md-5">
+        <!-- Filters -->
         <div class="marketplace-filters">
-          <!-- Filter -->
-          <select class="marketplace-filters__view" @change="state.view = $event.target.value">
+          <!-- Sort Filter -->
+          <select class="marketplace-filters__sort" v-model="state.sort">
+            <option value="newest">Newest</option>
+            <option value="price_asc">Price (Lowest)</option>
+            <option value="price_desc">Price (Highest)</option>
+            <option value="title_asc">Name (A-Z)</option>
+            <option value="title_desc">Name (Z-A)</option>
+          </select>
+
+          <!-- View Filter -->
+          <select class="marketplace-filters__view d-md-none" v-model="state.view">
             <option value="gallery">Gallery</option>
             <option value="list">List</option>
           </select>
