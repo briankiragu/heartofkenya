@@ -6,11 +6,8 @@ const CategoryFilter = {
 
 	template: `
     <ul class="category-slider">
-      <li
-        v-for="category of categories"
-        :key="category.id"
-        :class="{ active: category.id === 1 }"
-      >
+      <li class="active">All</li>
+      <li v-for="category of categories" :key="category.id">
         {{ category.name }}
       </li>
     </ul>

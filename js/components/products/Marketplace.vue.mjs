@@ -29,6 +29,7 @@ const Marketplace = {
 		// Define the state of the products view (gallery or list)
 		// eslint-disable-next-line no-undef
 		const state = Vue.ref({
+      category: "all",
 			sort: "newest",
 			view: "gallery",
 		});
