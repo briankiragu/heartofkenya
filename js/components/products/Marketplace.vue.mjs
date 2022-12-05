@@ -39,6 +39,7 @@ const Marketplace = {
 			{ id: 1, name: "Clothing" },
 			{ id: 2, name: "Electronics" },
 			{ id: 3, name: "Furniture" },
+			{ id: 4, name: "Utensils" },
 		]);
 
 		// Get the products to display.
@@ -46,7 +47,7 @@ const Marketplace = {
 		const products = Vue.ref([
 			{
 				id: 1,
-				name: "T-Shirt",
+				name: "Old T-Shirt",
 				category: "clothing",
 				location: "Machakos",
 				pricing: {
@@ -57,9 +58,9 @@ const Marketplace = {
 					},
 					currency: "KES",
 				},
-				created_at: "29-11-2022",
-				updated_at: "29-11-2022",
-				listed_until: "30-11-2022",
+				created_at: "2022-11-29",
+				updated_at: "2022-11-29",
+				listed_until: "2022-11-29",
 			},
 			{
 				id: 2,
@@ -74,9 +75,9 @@ const Marketplace = {
 					},
 					currency: "KES",
 				},
-				created_at: "29-11-2022",
-				updated_at: "29-11-2022",
-				listed_until: "30-11-2022",
+				created_at: "2022-11-29",
+				updated_at: "2022-11-29",
+				listed_until: "2022-11-30",
 			},
 			{
 				id: 3,
@@ -88,9 +89,9 @@ const Marketplace = {
 					discount: null,
 					currency: "KES",
 				},
-				created_at: "29-11-2022",
-				updated_at: "29-11-2022",
-				listed_until: "30-11-2022",
+				created_at: "2022-11-29",
+				updated_at: "2022-11-29",
+				listed_until: "2022-11-30",
 			},
 			{
 				id: 4,
@@ -102,16 +103,109 @@ const Marketplace = {
 					discount: null,
 					currency: "KES",
 				},
-				created_at: "29-11-2022",
-				updated_at: "29-11-2022",
-				listed_until: "30-11-2022",
+				created_at: "2022-11-29",
+				updated_at: "2022-11-29",
+				listed_until: "2022-11-30",
 			},
-		]);
+			{
+				id: 5,
+				name: "Denim",
+				category: "clothing",
+				location: "Machakos",
+				pricing: {
+					amount: 3200,
+					discount: null,
+					currency: "KES",
+				},
+				created_at: "2022-11-29",
+				updated_at: "2022-11-29",
+				listed_until: "2022-11-30",
+			},
+			{
+				id: 6,
+				name: "Denim",
+				category: "clothing",
+				location: "Machakos",
+				pricing: {
+					amount: 500,
+					discount: {
+						amount: 50,
+						type: "percentage",
+					},
+					currency: "KES",
+				},
+				created_at: "2022-11-29",
+				updated_at: "2022-11-29",
+				listed_until: "2022-11-30",
+			},
+			{
+				id: 7,
+				name: "Old Sneakers",
+				category: "clothing",
+				location: "Machakos",
+				pricing: {
+					amount: null,
+					discount: null,
+					currency: "KES",
+				},
+				created_at: "2022-11-29",
+				updated_at: "2022-11-29",
+				listed_until: "2022-11-29",
+			},
+		]); /**
+		 * Sort the products by the given criteria (newness, price,... etc).
+		 *
+		 * @returns {Record<string, any>[]} The sorted products.
+		 * @author Brian Kariuki <bkariuki@hotmail.com>
+		 */
+		// eslint-disable-next-line no-undef
+		const sortedProducts = Vue.computed(() => {
+			// Variable to hold the sorted products.
+			let sorted = products.value;
+
+			// Sort the products by the selected sort method.
+			switch (state.value.sort) {
+				case "price_asc": {
+					sorted = sorted.sort((a, b) => {
+						if (a.pricing.amount === null) {
+							return 1;
+						}
+						if (b.pricing.amount === null) {
+							return -1;
+						}
+						return a.pricing.amount - b.pricing.amount;
+					});
+					break;
+				}
+
+				case "price_desc": {
+					sorted = sorted.sort((a, b) => {
+						if (a.pricing.amount === null) {
+							return -1;
+						}
+						if (b.pricing.amount === null) {
+							return 1;
+						}
+						return b.pricing.amount - a.pricing.amount;
+					});
+					break;
+				}
+
+				default:
+					sorted = sorted.sort(
+						(a, b) => new Date(b.listed_until) - new Date(a.listed_until),
+					);
+					break;
+			}
+
+			// Return the sorted products.
+			return sorted;
+		});
 
 		return {
 			state,
 			categories,
-			products,
+			sortedProducts,
 			toCurrency,
 			toReadableTime,
 			toTitle,
@@ -138,8 +232,6 @@ const Marketplace = {
             <option value="newest">Newest</option>
             <option value="price_asc">Price (Lowest)</option>
             <option value="price_desc">Price (Highest)</option>
-            <option value="title_asc">Name (A-Z)</option>
-            <option value="title_desc">Name (Z-A)</option>
           </select>
 
           <!-- View Filter -->
@@ -151,7 +243,7 @@ const Marketplace = {
 
         <!-- Products -->
         <MarketplaceItem
-          v-for="product in products"
+          v-for="product in sortedProducts"
           :key="product.id"
           :product="product"
           class="col-md-4 col-lg-3"
