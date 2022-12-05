@@ -8,11 +8,33 @@
  * @return {string} The human-readable currency format.
  * @author Brian K. Kiragu <bkariuki@hotmail.com>
  */
-const toCurrency = (value = 0, locale = "en-GB", currency = "KES") =>
-	Intl.NumberFormat(locale, {
-		style: "currency",
-		currency,
-	}).format(value);
+const toCurrency = (value = 0, locale = "en-GB", currency = "KES") => {
+	// Default price of 'FREE'.
+	let price = "FREE";
+
+	// Get the correct currency based on the value...
+	switch (value) {
+		case null: {
+			price = "SALE";
+			break;
+		}
+
+		case 0: {
+			price = "FREE";
+			break;
+		}
+
+		default:
+			price = Intl.NumberFormat(locale, {
+				style: "currency",
+				currency,
+			}).format(value);
+			break;
+	}
+
+	// Return the price.
+	return price;
+};
 
 /**
  * Convert a date/time into a human-readable relative time.

@@ -1,5 +1,6 @@
 // Import composables...
 import { toCurrency, toTitle } from "../../composables/useFormatting.mjs";
+import { getPrice } from "../../composables/usePricing.mjs";
 
 // Define the component...
 const MarketplaceItem = {
@@ -8,7 +9,7 @@ const MarketplaceItem = {
 	},
 
 	setup() {
-		return { toCurrency, toTitle };
+		return { getPrice, toCurrency, toTitle };
 	},
 
 	template: `
@@ -16,10 +17,13 @@ const MarketplaceItem = {
       <!-- Product image -->
       <div class="marketplace-item__image">
         <img
-          :src="'https://picsum.photos/id/' + product.id + '/640.webp'"
+          :src="'https://picsum.photos/id/' + product.id * 10 + '/640.webp'"
           :alt="product.name + 'image'"
           class="img-fluid"
         />
+        <span class="marketplace-item__image__category">
+          {{ toTitle(product.category) }}
+        </span>
       </div>
 
       <!-- Product details -->
@@ -28,14 +32,9 @@ const MarketplaceItem = {
           {{ product.name }}
         </h3>
         <p class="marketplace-item__description__price">
-          {{ toCurrency(product.price) }}
+          <s v-if="product.pricing.discount">{{ toCurrency(product.pricing.amount) }}</s>
+          <span>{{ toCurrency(getPrice(product.pricing)) }}</span>
         </p>
-        <p class="marketplace-item__description__category">
-          {{ toTitle(product.category) }}
-        </p>
-        <!-- <p class="marketplace-item__description__date">
-          {{ product.updated_at }}
-        </p> -->
       </article>
     </div>
   `,
