@@ -113,8 +113,8 @@ const Marketplace = {
 	template: `
     <div id="marketplace" class="container-fluid">
       <!-- Categories -->
-      <section id="category-filter" style="padding: 0.85rem 0.45rem;">
-        <div id="category-heading" class="mb-3">
+      <section class="category-filter" style="padding: 0.85rem 0.45rem;">
+        <div class="category-filter__heading" class="mb-3">
           <h2 class="mb-0">Categories</h2>
           <span>View all</span>
         </div>

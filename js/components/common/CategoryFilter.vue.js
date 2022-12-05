@@ -5,7 +5,7 @@ const CategoryFilter = {
 	},
 
 	template: `
-    <ul id="category-slider">
+    <ul class="category-slider">
       <li
         v-for="category of categories"
         :key="category.id"
