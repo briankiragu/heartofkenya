@@ -26,6 +26,12 @@ const Marketplace = {
 
 	// Initial setup of the component.
 	setup() {
+		// Define the state of the products view (gallery or list)
+		// eslint-disable-next-line no-undef
+		const state = Vue.ref({
+			view: "gallery",
+		});
+
 		// Get the categories to filter the products by.
 		// eslint-disable-next-line no-undef
 		const categories = Vue.ref([
@@ -102,6 +108,7 @@ const Marketplace = {
 		]);
 
 		return {
+			state,
 			categories,
 			products,
 			toCurrency,
@@ -114,7 +121,7 @@ const Marketplace = {
     <div id="marketplace" class="container-fluid">
       <!-- Categories -->
       <section class="category-filter" style="padding: 0.85rem 0.45rem;">
-        <div class="category-filter__heading" class="mb-3">
+        <div class="category-filter__heading">
           <h2 class="mb-0">Categories</h2>
           <span>View all</span>
         </div>
@@ -123,11 +130,21 @@ const Marketplace = {
 
       <!-- Products -->
       <section class="p-2 row g-3 g-md-5">
+        <div class="marketplace-filters">
+          <!-- Filter -->
+          <select class="marketplace-filters__view" @change="state.view = $event.target.value">
+            <option value="gallery">Gallery</option>
+            <option value="list">List</option>
+          </select>
+        </div>
+
+        <!-- Products -->
         <MarketplaceItem
           v-for="product in products"
           :key="product.id"
           :product="product"
-          class="col-6 col-md-4 col-lg-3"
+          class="col-md-4 col-lg-3"
+          :class="[state.view === 'gallery' ? 'col-6' : 'col-12']"
         />
       </section>
     </div>

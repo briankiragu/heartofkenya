@@ -9,6 +9,7 @@
 }
 
 #marketplace .category-filter .category-filter__heading {
+  margin-bottom: .9rem;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
@@ -53,6 +54,23 @@
   background-color: #1f2937;
   color: #f9fafb;
   font-weight: bold;
+}
+
+#marketplace .marketplace-filters {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+#marketplace .marketplace-filters .marketplace-filters__view {
+  border: #9ca3af solid 1px;
+  border-radius: .4rem;
+  padding: .3rem .5rem;
+  color: #4b5563;
+}
+
+#marketplace .marketplace-filters .marketplace-filters__view:focus {
+  outline: none;
 }
 
 #marketplace .marketplace-item {
