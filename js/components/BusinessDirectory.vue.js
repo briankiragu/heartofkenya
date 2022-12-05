@@ -1,22 +1,22 @@
 /* eslint-disable import/extensions */
 /* eslint-disable import/no-unresolved */
-import useBackend from '../composables/useBackend.js';
+import useBackend from "../composables/useBackend.js";
 
 // eslint-disable-next-line no-undef
-const BusinessFilter = Vue.defineAsyncComponent(() =>
-  import('./BusinessFilter.vue.js')
+const BusinessFilter = Vue.defineAsyncComponent(
+  () => import("./BusinessFilter.vue.js"),
 );
 // eslint-disable-next-line no-undef
-const BusinessSearchBar = Vue.defineAsyncComponent(() =>
-  import('./BusinessSearchBar.vue.js')
+const BusinessSearchBar = Vue.defineAsyncComponent(
+  () => import("./BusinessSearchBar.vue.js"),
 );
 // eslint-disable-next-line no-undef
-const BusinessForm = Vue.defineAsyncComponent(() =>
-  import('./BusinessForm.vue.js')
+const BusinessForm = Vue.defineAsyncComponent(
+  () => import("./BusinessForm.vue.js"),
 );
 // eslint-disable-next-line no-undef
-const BusinessList = Vue.defineAsyncComponent(() =>
-  import('./BusinessList.vue.js')
+const BusinessList = Vue.defineAsyncComponent(
+  () => import("./BusinessList.vue.js"),
 );
 
 export default {
@@ -76,7 +76,7 @@ export default {
     </div>
   `,
 
-  name: 'BusinessDirectory',
+  name: "BusinessDirectory",
   components: {
     BusinessFilter,
     BusinessSearchBar,
@@ -97,7 +97,7 @@ export default {
 
     // Check if the directory category has been set.
     // eslint-disable-next-line no-undef
-    const hasDirectoryCategory = directoryCategory !== '';
+    const hasDirectoryCategory = directoryCategory !== "";
 
     // Declare data properties.
     // eslint-disable-next-line no-undef
@@ -149,7 +149,7 @@ export default {
       // Get the current query parameters.
       const urlSearchParams = new URLSearchParams(window.location.search);
       const { search, category } = Object.fromEntries(
-        urlSearchParams.entries()
+        urlSearchParams.entries(),
       );
 
       // Set the search term depending on the search URL params.
@@ -172,7 +172,7 @@ export default {
         .then((response) => {
           categories.value = [
             ...response.data.filter(
-              (catgry) => catgry.status.toLowerCase() === 'active'
+              (catgry) => catgry.status.toLowerCase() === "active",
             ),
           ];
         })
@@ -218,7 +218,7 @@ export default {
 
     // Provide the categories and updateBusiness to the children.
     // eslint-disable-next-line no-undef
-    Vue.provide('categories', categories);
+    Vue.provide("categories", categories);
 
     return {
       hasDirectoryCategory,
