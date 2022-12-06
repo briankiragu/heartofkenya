@@ -177,19 +177,21 @@ const Marketplace = {
         keys: ['name', 'category', 'location'],
       });
 
-      // Make the search.
-      let sorted = fuse
-        .search(state.value.search)
-        .map((result) => result.item)
-        .filter((product) => {
-          // If the category is "all", return all products.
-          if (state.value.category === 'all') {
-            return true;
-          }
+      // Determine whether or not to run the search based on the search string. If it is empty, do not run the search.
+      const data = state.value.search
+        ? fuse.search(state.value.search).map((result) => result.item)
+        : products.value;
 
-          // Return the products in the selected category.
-          return product.category === state.value.category;
-        });
+      // Make the search.
+      let sorted = data.filter((product) => {
+        // If the category is "all", return all products.
+        if (state.value.category === 'all') {
+          return true;
+        }
+
+        // Return the products in the selected category.
+        return product.category === state.value.category;
+      });
 
       // Sort the products by the selected sort method.
       switch (state.value.sort) {
@@ -250,7 +252,6 @@ const Marketplace = {
       <section class="category-filter p-2">
         <div class="category-filter__heading">
           <h2 class="mb-0">Categories</h2>
-          <span>View all</span>
         </div>
         <CategoryFilter
           v-model:category="state.category"
