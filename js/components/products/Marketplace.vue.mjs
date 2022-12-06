@@ -1,14 +1,20 @@
 // Import composables...
 import {
-  toCurrency,
+  toNumber,
+  toPrice,
   toReadableTime,
   toTitle,
 } from '../../composables/useFormatting.mjs';
 
 // Define components...
 // eslint-disable-next-line no-undef
+const SearchBar = Vue.defineAsyncComponent(() =>
+  import('../common/SearchBar.vue.mjs')
+);
+
+// eslint-disable-next-line no-undef
 const CategoryFilter = Vue.defineAsyncComponent(() =>
-  import('../common/CategoryFilter.vue.js')
+  import('../common/CategoryFilter.vue.mjs')
 );
 
 // eslint-disable-next-line no-undef
@@ -20,6 +26,7 @@ const MarketplaceItem = Vue.defineAsyncComponent(() =>
 const Marketplace = {
   name: 'Marketplace',
   components: {
+    SearchBar,
     CategoryFilter,
     MarketplaceItem,
   },
@@ -29,6 +36,7 @@ const Marketplace = {
     // Define the state of the products view (gallery or list)
     // eslint-disable-next-line no-undef
     const state = Vue.ref({
+      search: '',
       category: 'all',
       sort: 'newest',
       view: 'gallery',
@@ -154,6 +162,7 @@ const Marketplace = {
         listed_until: '2022-11-29',
       },
     ]);
+
     /**
      * Sort the products by the given criteria (newness, price,... etc).
      *
@@ -162,16 +171,25 @@ const Marketplace = {
      */
     // eslint-disable-next-line no-undef
     const sortedProducts = Vue.computed(() => {
-      // Variable to hold the sorted products in the selected category.
-      let sorted = products.value.filter((product) => {
-        // If the category is "all", return all products.
-        if (state.value.category === 'all') {
-          return true;
-        }
-
-        // Return the products in the selected category.
-        return product.category === state.value.category;
+      // Create a FuseJS instance to search the products based on the search query.
+      // eslint-disable-next-line no-undef
+      const fuse = new Fuse(products.value, {
+        keys: ['name', 'category', 'location'],
       });
+
+      // Make the search.
+      let sorted = fuse
+        .search(state.value.search)
+        .map((result) => result.item)
+        .filter((product) => {
+          // If the category is "all", return all products.
+          if (state.value.category === 'all') {
+            return true;
+          }
+
+          // Return the products in the selected category.
+          return product.category === state.value.category;
+        });
 
       // Sort the products by the selected sort method.
       switch (state.value.sort) {
@@ -216,7 +234,8 @@ const Marketplace = {
       state,
       categories,
       sortedProducts,
-      toCurrency,
+      toNumber,
+      toPrice,
       toReadableTime,
       toTitle,
     };
@@ -224,8 +243,11 @@ const Marketplace = {
 
   template: `
     <div id="marketplace" class="container-fluid">
+      <!-- Search bar -->
+      <SearchBar v-model:search="state.search" class="p-3 px-2" />
+
       <!-- Categories -->
-      <section class="category-filter" style="padding: 0.85rem 0.45rem;">
+      <section class="category-filter p-2">
         <div class="category-filter__heading">
           <h2 class="mb-0">Categories</h2>
           <span>View all</span>
@@ -237,7 +259,7 @@ const Marketplace = {
       </section>
 
       <!-- Products -->
-      <section class="p-2 row g-3 g-md-5">
+      <section class="p-2">
         <!-- Filters -->
         <div class="marketplace-filters">
           <!-- Sort Filter -->
@@ -254,14 +276,22 @@ const Marketplace = {
           </select>
         </div>
 
-        <!-- Products -->
-        <MarketplaceItem
-          v-for="product in sortedProducts"
-          :key="product.id"
-          :product="product"
-          class="col-md-4 col-lg-3"
-          :class="[state.view === 'gallery' ? 'col-6' : 'col-12']"
-        />
+        <!-- Results -->
+        <div class="py-3 row g-3 g-md-5">
+          <!-- Count -->
+          <span class="marketplace-results__count">
+            {{ toNumber(sortedProducts.length) }} results
+          </span>
+
+          <!-- Products -->
+          <MarketplaceItem
+            v-for="product in sortedProducts"
+            :key="product.id"
+            :product="product"
+            class="col-md-4 col-lg-3"
+            :class="[state.view === 'gallery' ? 'col-6' : 'col-12']"
+          />
+        </div>
       </section>
     </div>
   `,

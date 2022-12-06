@@ -1,5 +1,17 @@
 /**
- * Convert a number into a currency format.
+ * Convert a number into a readable number format.
+ *
+ * @param {number} value The value to format.
+ * @param {string} locale The default locale to use. (Defaults to en-GB)
+ *
+ * @return {string} The human-readable number format.
+ * @author Brian K. Kiragu <bkariuki@hotmail.com>
+ */
+const toNumber = (value, locale = 'en-GB') =>
+  Intl.NumberFormat(locale).format(value);
+
+/**
+ * Convert a number into a price format.
  *
  * @param {number} amount The amount to convert.
  * @param {string} locale The default locale to use. (Defaults to en-GB)
@@ -8,32 +20,32 @@
  * @return {string} The human-readable currency format.
  * @author Brian K. Kiragu <bkariuki@hotmail.com>
  */
-const toCurrency = (value = 0, locale = "en-GB", currency = "KES") => {
-	// Default price of 'FREE'.
-	let price = "FREE";
+const toPrice = (value = 0, locale = 'en-GB', currency = 'KES') => {
+  // Default price of 'FREE'.
+  let price = 'FREE';
 
-	// Get the correct currency based on the value...
-	switch (value) {
-		case null: {
-			price = "SALE";
-			break;
-		}
+  // Get the correct currency based on the value...
+  switch (value) {
+    case null: {
+      price = 'SALE';
+      break;
+    }
 
-		case 0: {
-			price = "FREE";
-			break;
-		}
+    case 0: {
+      price = 'FREE';
+      break;
+    }
 
-		default:
-			price = Intl.NumberFormat(locale, {
-				style: "currency",
-				currency,
-			}).format(value);
-			break;
-	}
+    default:
+      price = Intl.NumberFormat(locale, {
+        style: 'currency',
+        currency,
+      }).format(value);
+      break;
+  }
 
-	// Return the price.
-	return price;
+  // Return the price.
+  return price;
 };
 
 /**
@@ -45,8 +57,8 @@ const toCurrency = (value = 0, locale = "en-GB", currency = "KES") => {
  * @returns {string} The human-readable relative time.
  * @author Brian K. Kiragu <bkariuki@hotmail.com>
  */
-const toReadableTime = (value, locale = "en-GB") =>
-	new Intl.DateTimeFormat(locale).format(value);
+const toReadableTime = (value, locale = 'en-GB') =>
+  new Intl.DateTimeFormat(locale).format(value);
 
 /**
  * Convert a word/phrase to 'Title Case'.
@@ -56,14 +68,14 @@ const toReadableTime = (value, locale = "en-GB") =>
  *
  * @author Brian Kariuki Kiragu <bkariuki@hotmail.com>
  */
-const toTitle = (value = "") => {
-	// List of possible string delimiters.
-	const separators = [" ", "\\+", "-", "\\(", "\\)", "\\*", "/", ":", "\\?"];
+const toTitle = (value = '') => {
+  // List of possible string delimiters.
+  const separators = [' ', '\\+', '-', '\\(', '\\)', '\\*', '/', ':', '\\?'];
 
-	return value
-		.split(new RegExp(separators.join("|"), "g"))
-		.map((word) => word.charAt(0).toUpperCase() + word.slice(1))
-		.join(" ");
+  return value
+    .split(new RegExp(separators.join('|'), 'g'))
+    .map((word) => word.charAt(0).toUpperCase() + word.slice(1))
+    .join(' ');
 };
 
-export { toCurrency, toReadableTime, toTitle };
+export { toNumber, toPrice, toReadableTime, toTitle };
