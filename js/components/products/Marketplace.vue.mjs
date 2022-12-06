@@ -290,20 +290,26 @@ const Marketplace = {
         </div>
 
         <!-- Results -->
-        <div class="py-3 row g-3 g-md-5">
+        <div class="py-3">
           <!-- Count -->
           <span class="marketplace-results__count">
             {{ toNumber(sortedProducts.length) }} results
           </span>
 
           <!-- Products -->
-          <MarketplaceItem
-            v-for="product in sortedProducts"
-            :key="product.id"
-            :product="product"
-            class="col-md-4 col-lg-3"
-            :class="[state.view === 'gallery' ? 'col-6' : 'col-12']"
-          />
+          <TransitionGroup
+            name="marketplace-items"
+            tag="div"
+            class="row g-3 g-md-5"
+          >
+            <MarketplaceItem
+              v-for="product in sortedProducts"
+              :key="product.id"
+              :product="product"
+              class="col-md-4 col-lg-3"
+              :class="[state.view === 'gallery' ? 'col-6' : 'col-12']"
+            />
+          </TransitionGroup>
         </div>
       </section>
     </div>

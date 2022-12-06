@@ -37,7 +37,7 @@ const CategoryFilter = {
         :class="{ active: category === 'sale' }"
         @click.prevent="setCategory('sale')"
       >
-        Sale
+        SALE
       </li>
       <li
         v-for="cat of categories"
