@@ -34,6 +34,12 @@ const CategoryFilter = {
         All
       </li>
       <li
+        :class="{ active: category === 'sale' }"
+        @click.prevent="setCategory('sale')"
+      >
+        Sale
+      </li>
+      <li
         v-for="cat of categories"
         :key="cat.id"
         :class="{ active: category === cat.name }"

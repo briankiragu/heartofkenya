@@ -196,6 +196,11 @@ const Marketplace = {
           return true;
         }
 
+        // If the cateory is 'sale', return only products that have no amount.
+        if (state.value.category === 'sale') {
+          return product.pricing.amount === null;
+        }
+
         // Return the products in the selected category.
         return product.category === state.value.category;
       });
