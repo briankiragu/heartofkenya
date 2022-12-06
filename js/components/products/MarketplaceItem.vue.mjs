@@ -13,7 +13,7 @@ const MarketplaceItem = {
   },
 
   template: `
-    <div class="marketplace-item">
+    <a :href="product.url" target="_blank" class="marketplace-item">
       <!-- Product image -->
       <div class="marketplace-item__image">
         <img
@@ -38,7 +38,7 @@ const MarketplaceItem = {
           <span>{{ toPrice(getPrice(product.pricing)) }}</span>
         </p>
       </article>
-    </div>
+    </a>
   `,
 };
 

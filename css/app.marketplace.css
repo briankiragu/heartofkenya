@@ -96,7 +96,9 @@
 }
 
 #marketplace .marketplace-item {
-  margin-bottom: 1.6rem;
+  margin-bottom: 1rem;
+  cursor: pointer;
+  text-decoration: none;
 }
 
 #marketplace .marketplace-item .marketplace-item__image {
