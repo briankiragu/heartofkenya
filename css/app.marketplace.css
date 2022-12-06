@@ -29,9 +29,13 @@
 #marketplace .category-filter .category-slider {
   margin: 0;
   padding: 0;
-  list-style-type: none;
+  overflow-x: scroll;
   display: flex;
-  flex-wrap: wrap;
+  list-style-type: none;
+}
+
+#marketplace .category-filter .category-slider::-webkit-scrollbar {
+  display: none;
 }
 
 #marketplace .category-filter .category-slider li {

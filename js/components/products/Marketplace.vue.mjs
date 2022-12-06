@@ -65,8 +65,8 @@ const Marketplace = {
       },
       {
         id: 2,
-        name: 'Jeans',
-        category: 'clothing',
+        name: 'Sofa',
+        category: 'furniture',
         location: 'Machakos',
         pricing: {
           amount: 2500,
@@ -82,8 +82,8 @@ const Marketplace = {
       },
       {
         id: 3,
-        name: 'Sweater',
-        category: 'clothing',
+        name: 'Electric kettle',
+        category: 'electronics',
         location: 'Machakos',
         pricing: {
           amount: 0,
@@ -110,8 +110,8 @@ const Marketplace = {
       },
       {
         id: 5,
-        name: 'Denim',
-        category: 'clothing',
+        name: 'Cooking Pan Set',
+        category: 'utensils',
         location: 'Machakos',
         pricing: {
           amount: 3200,
@@ -124,8 +124,8 @@ const Marketplace = {
       },
       {
         id: 6,
-        name: 'Denim',
-        category: 'clothing',
+        name: 'Mattress',
+        category: 'furtniture',
         location: 'Machakos',
         pricing: {
           amount: 500,
