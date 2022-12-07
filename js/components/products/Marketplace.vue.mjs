@@ -18,6 +18,11 @@ const CategoryFilter = Vue.defineAsyncComponent(() =>
 );
 
 // eslint-disable-next-line no-undef
+const MarketplaceNewEntry = Vue.defineAsyncComponent(() =>
+  import('./MarketplaceNewEntry.vue.mjs')
+);
+
+// eslint-disable-next-line no-undef
 const MarketplaceItem = Vue.defineAsyncComponent(() =>
   import('./MarketplaceItem.vue.mjs')
 );
@@ -28,6 +33,7 @@ const Marketplace = {
   components: {
     SearchBar,
     CategoryFilter,
+    MarketplaceNewEntry,
     MarketplaceItem,
   },
 
@@ -97,7 +103,10 @@ const Marketplace = {
         location: 'Machakos',
         pricing: {
           amount: 0,
-          discount: null,
+          discount: {
+            amount: null,
+            type: 'fixed',
+          },
           currency: 'KES',
         },
         url: 'https://heartofkenya.com/machakos',
@@ -112,7 +121,10 @@ const Marketplace = {
         location: 'Machakos',
         pricing: {
           amount: null,
-          discount: null,
+          discount: {
+            amount: null,
+            type: 'fixed',
+          },
           currency: 'KES',
         },
         url: 'https://heartofkenya.com/machakos',
@@ -127,7 +139,10 @@ const Marketplace = {
         location: 'Machakos',
         pricing: {
           amount: 3200,
-          discount: null,
+          discount: {
+            amount: null,
+            type: 'fixed',
+          },
           currency: 'KES',
         },
         url: 'https://heartofkenya.com/machakos',
@@ -160,7 +175,10 @@ const Marketplace = {
         location: 'Machakos',
         pricing: {
           amount: null,
-          discount: null,
+          discount: {
+            amount: null,
+            type: 'fixed',
+          },
           currency: 'KES',
         },
         url: 'https://heartofkenya.com/machakos',
@@ -287,6 +305,11 @@ const Marketplace = {
             <option value="gallery">Gallery</option>
             <option value="list">List</option>
           </select>
+        </div>
+
+        <!-- New Entry -->
+        <div class="my-3 d-flex justify-content-end">
+          <MarketplaceNewEntry :categories="categories" />
         </div>
 
         <!-- Results -->

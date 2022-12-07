@@ -32,7 +32,7 @@ const MarketplaceItem = {
           {{ product.name }}
         </h3>
         <p class="marketplace-item__description__price">
-          <s v-if="product.pricing.discount">
+          <s v-if="product.pricing.discount.amount">
             {{ toPrice(product.pricing.amount) }}
           </s>
           <span>{{ toPrice(getPrice(product.pricing)) }}</span>
