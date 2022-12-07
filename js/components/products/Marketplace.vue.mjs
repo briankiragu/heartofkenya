@@ -262,6 +262,10 @@ const Marketplace = {
       return sorted;
     });
 
+    const addEntry = (data) => {
+      console.dir(data);
+    };
+
     return {
       state,
       categories,
@@ -270,6 +274,7 @@ const Marketplace = {
       toPrice,
       toReadableTime,
       toTitle,
+      addEntry,
     };
   },
 
@@ -309,7 +314,7 @@ const Marketplace = {
 
         <!-- New Entry -->
         <div class="my-3 d-flex justify-content-end">
-          <MarketplaceNewEntry :categories="categories" />
+          <MarketplaceNewEntry :categories="categories" @submit="addEntry" />
         </div>
 
         <!-- Results -->

@@ -163,6 +163,10 @@
   box-shadow: none;
 }
 
+#marketplace .marketplace-new-entry__dialog article input:disabled {
+  color: var(--neutral-300);
+}
+
 #marketplace .marketplace-new-entry__dialog footer {
   background-color: var(--neutral-100);
 }

@@ -6,8 +6,9 @@ const MarketplaceNewEntry = {
   props: {
     categories: { type: Array, default: () => [], required: true },
   },
+  emit: ['submit'],
 
-  setup() {
+  setup(_, { emit }) {
     // Get a template reference to the dialog.
     // eslint-disable-next-line no-undef
     const dialogEl = Vue.ref(null);
@@ -21,7 +22,7 @@ const MarketplaceNewEntry = {
     const state = Vue.ref({
       name: '',
       category: '',
-      location: '',
+      location: 'machakos',
       pricing: {
         amount: null,
         discount: {
@@ -30,9 +31,94 @@ const MarketplaceNewEntry = {
         },
         currency: 'KES',
       },
+      url: 'https://heartofkenya.com/machakos',
+      // Two days from now.
+      // eslint-disable-next-line no-undef
+      listed_until: moment().format('YYYY-MM-DDThh:mm'),
     });
 
-    return { dialogEl, isForSale, state, toTitle };
+    // Get the minimum date (currently) for the 'listed_until' field.
+    // eslint-disable-next-line no-undef
+    const minListedUntil = Vue.computed(() =>
+      // eslint-disable-next-line no-undef
+      moment().format('YYYY-MM-DDThh:mm')
+    );
+
+    // Get the maximum date (2 days from the current date) for the 'listed_until' field.
+    // eslint-disable-next-line no-undef
+    const maxListedUntil = Vue.computed(() =>
+      // eslint-disable-next-line no-undef
+      moment().add(2, 'days').format('YYYY-MM-DDThh:mm')
+    );
+
+    /**
+     * When a user submits the form, prepare the data
+     * (ensure the pricing is correct relative to sale, set the timestamps)
+     * and emit it.
+     *
+     * @returns {void}
+     * @author Brian Kariki <bkariuki@hotmail.com>
+     */
+    const handleSubmit = () => {
+      // Prepare the form data if the product is for sale.
+      // (Set the price and discount amount to null).
+      if (isForSale.value) {
+        // eslint-disable-next-line no-undef
+        const { discount, currency } = state.value.pricing;
+
+        // eslint-disable-next-line no-undef
+        state.value.pricing = {
+          amount: null,
+          discount: {
+            type: discount.type,
+            amount: null,
+          },
+          currency,
+        };
+      }
+
+      // Set the created and updated dates.
+      state.value.created_at = new Date().toISOString();
+      state.value.updated_at = new Date().toISOString();
+
+      // Emit the form data.
+      emit('submit', state.value);
+
+      // eslint-disable-next-line no-undef
+      Vue.nextTick(() => {
+        // Close the dialog.
+        dialogEl.value.close('close');
+
+        // Reset the form state.
+        state.value = {
+          name: '',
+          category: '',
+          location: 'machakos',
+          pricing: {
+            amount: null,
+            discount: {
+              type: 'fixed',
+              amount: null,
+            },
+            currency: 'KES',
+          },
+          url: 'https://heartofkenya.com/machakos',
+          // Two days from now.
+          // eslint-disable-next-line no-undef
+          listed_until: moment().format('YYYY-MM-DDThh:mm'),
+        };
+      });
+    };
+
+    return {
+      dialogEl,
+      isForSale,
+      state,
+      minListedUntil,
+      maxListedUntil,
+      toTitle,
+      handleSubmit,
+    };
   },
 
   template: `
@@ -158,6 +244,7 @@ const MarketplaceNewEntry = {
                   :class="{ disabled: isForSale }"
                   placeholder="Ex: 500"
                   min="1"
+                  :max="state.pricing.discount.type === 'percentage' ? 100 : state.pricing.amount"
                   :disabled="isForSale"
                 />
               </div>
@@ -184,7 +271,8 @@ const MarketplaceNewEntry = {
                 id="listed_until"
                 v-model.trim="state.listed_until"
                 class="form-control"
-                :placeholder="new Date().toLocaleString()"
+                :min="minListedUntil"
+                :max="maxListedUntil"
                 required
               />
             </div>
@@ -195,7 +283,9 @@ const MarketplaceNewEntry = {
               <button autofocus type="reset" class="btn" @click.prevent="dialogEl.close('cancel')">
                 Cancel
               </button>
-              <button type="submit" value="confirm" class="btn">Confirm</button>
+              <button type="submit" value="confirm" class="btn" @click.prevent="handleSubmit">
+                Confirm
+              </button>
             </menu>
           </footer>
         </form>

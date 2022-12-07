@@ -9,7 +9,7 @@ const CategoryFilter = {
   },
   emits: ['update:category'],
 
-  setup(props, { emit }) {
+  setup(_, { emit }) {
     /**
      * Set the category to filter the products by.
      *

@@ -4,7 +4,7 @@ const SearchBar = {
   },
   emit: ['update:search'],
 
-  setup(props, { emit }) {
+  setup(_, { emit }) {
     /**
      * Function to debounce (delay) execution of a function.
      *
