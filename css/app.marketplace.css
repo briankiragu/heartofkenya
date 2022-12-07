@@ -61,7 +61,7 @@
 }
 
 #marketplace .category-filter .category-slider li.active {
-  background-color: #1f2937;
+  background-color: var(--primary-500);
   color: #f9fafb;
   font-weight: bold;
 }
@@ -125,7 +125,7 @@
 #marketplace .marketplace-item .marketplace-item__image {
   position: relative;
   margin: 0;
-  margin-bottom: .7rem;
+  margin-bottom: .4rem;
 }
 
 #marketplace .marketplace-item .marketplace-item__image img {
@@ -138,8 +138,8 @@
   right: .5rem;
   border-radius: .3rem;
   padding: .2rem .5rem;
-  background-color: #818cf8;
-  color: #eef2ff;
+  background-color: var(--primary-500);
+  color: var(--primary-100);
   font-size: .75rem;
 }
 
@@ -148,15 +148,15 @@
 }
 
 #marketplace .marketplace-item .marketplace-item__description .marketplace-item__description__title {
-  margin-bottom: .2rem;
-  font-size: 1rem;
+  margin-bottom: .05rem;
+  font-size: .9rem;
   font-weight: bold;
 }
 
 #marketplace .marketplace-item .marketplace-item__description .marketplace-item__description__price {
   display: flex;
   flex-direction: column;
-  font-size: .7rem;
+  font-size: .65rem;
   font-weight: 900;
   color: #6b7280;
 }
@@ -167,7 +167,7 @@
 
 #marketplace .marketplace-item .marketplace-item__description .marketplace-item__description__price span {
   margin: 0;
-  font-size: .9rem;
+  font-size: .8rem;
 }
 
 @media only screen and (min-width: 768px) {

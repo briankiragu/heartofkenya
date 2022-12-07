@@ -31,12 +31,18 @@ const CategoryFilter = {
         :class="{ active: category === 'all' }"
         @click.prevent="setCategory('all')"
       >
+        <span v-show="category === 'all'" class="business-filter-item__icon">
+          <i class="fas fa-fingerprint"></i>
+        </span>
         All
       </li>
       <li
         :class="{ active: category === 'sale' }"
         @click.prevent="setCategory('sale')"
       >
+        <span v-show="category === 'sale'" class="business-filter-item__icon">
+          <i class="fas fa-fingerprint"></i>
+        </span>
         SALE
       </li>
       <li
@@ -45,6 +51,9 @@ const CategoryFilter = {
         :class="{ active: category === cat.name }"
         @click.prevent="setCategory(cat.name)"
       >
+        <span v-show="category === cat.name" class="business-filter-item__icon">
+          <i class="fas fa-fingerprint"></i>
+        </span>
         {{ toTitle(cat.name) }}
       </li>
     </ul>
